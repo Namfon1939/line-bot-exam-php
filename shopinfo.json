@@ -101,9 +101,9 @@
           {
             "type": "button",
             "action": {
-              "type": "text",
+              "type": "uri",
               "label": "โทรออก",
-              "text": "0815960912"
+              "uri": "0815960912"
             },
             "height": "sm",
             "style": "link"
