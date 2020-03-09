@@ -14,38 +14,132 @@ if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
-		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-			// Get text sent
-			$text = $event['source']['userId'];
-			// Get replyToken
-			$replyToken = $event['replyToken'];
-
-			// Build message to reply back
-			$messages = [
-				'type' => 'text',
-				'text' => $text
-			];
-
-			// Make a POST Request to Messaging API to reply to sender
-			$url = 'https://api.line.me/v2/bot/message/reply';
-			$data = [
-				'replyToken' => $replyToken,
-				'messages' => [$messages],
-			];
-			$post = json_encode($data);
-			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-
-			$ch = curl_init($url);
-			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-			$result = curl_exec($ch);
-			curl_close($ch);
-
-			echo $result . "\r\n";
+		if ($event['type'] == 'message' && $event['message']['text'] == 'services') {
+			$service_json = json_decode(file_get_contents("services.json"),true);
+			$service_json['contents']['hero']['url'] = 'https://lh3.googleusercontent.com/proxy/-1c7kpqSBd9MstpLoL1SssBqYrwCIFRJEO0GHycFDq7ZfioJKWjNkF1Qn7jex6Z18Kr51k_W2Oa5vHimHAIDDMVdGQbvjHHu6tKcXSWQxfuOT8NSvjOfZGTi1VR8e9aYNA_y';
+			$service_json['contents']['body']['contents'][0]['text'] = 'นวดฝ่าเท้า';
+			$service_json['contents']['body']['contents'][1]['text'] = 'จ อ พฤ ศ';
+			$service_json['contents']['body']['contents'][2]['text'] = '9,999 ฿';
+			$messages = $service_json;
 		}
+		if ($event['type'] == 'message' && $event['message']['text'] == 'promotions') {
+			$messages = json_decode(file_get_contents("promotions.json"),true);
+		}
+		if ($event['type'] == 'message' && $event['message']['text'] == 'mybooking') {
+			$code = "#46547";
+			$mybooking_json = json_decode(file_get_contents("mybooking.json"),true);
+			$mybooking_json['contents']['header']['contents'][0]['text'] = $code;
+			$mybooking_json['contents']['header']['contents'][1]['text'] = 'นวดฝ่าเท้า';
+			$mybooking_json['contents']['header']['contents'][2]['text'] = '12/12/2020, 19:00';
+			$mybooking_json['contents']['body']['contents'][1]['contents'][0]['text'] = 'x76';
+			$mybooking_json['contents']['body']['contents'][1]['contents'][1]['text'] = '9,899 ฿';
+			$mybooking_json['contents']['body']['contents'][3]['contents'][1]['text'] = 'เจ้น้ำ';
+			$mybooking_json['contents']['body']['contents'][4]['contents'][1]['text'] = 'ขอมือเบาๆ';
+			$mybooking_json['contents']['footer']['contents'][1]['action']['displayText'] = "cancel";
+			$mybooking_json['contents']['footer']['contents'][1]['action']['data'] = 'action=cancel&booking='.$code;
+			$messages = $mybooking_json;
+		}
+		if ($event['type'] == 'postback') {
+			$data = explode("&", $event['postback']['data']);
+			if($data[0] == 'action=cancel') {
+				$con_json = json_decode(file_get_contents("confirmCancel.json"),true);
+				$con_json['contents']['header']['contents'][0]['text'] = 'ยกเลิกจริงป่ะจ้ะ'.$data[1];
+				$con_json['contents']['footer']['contents'][0]['contents'][0]['action']['data'] = 'action=yescancel&' .$data[1];
+				$con_json['contents']['footer']['contents'][0]['contents'][1]['action']['data'] = 'action=nocancel&' .$data[1];
+				$messages = $con_json; 
+			}
+			if($data[0] == 'action=yescancel') {
+				$cancel_json = json_decode(file_get_contents("cancel.json"),true);
+				$messages = $cancel_json;
+			}
+			if($data[0] == 'action=nocancel') {
+				$messages = [
+					'type' => 'text',
+					'text' => 'no no no'
+				];
+			}
+		}
+		if ($event['type'] == 'message' && $event['message']['text'] == 'shopinfo') {
+			$service = [];
+			$names = [
+				[
+					'name'=>'tew',
+				],
+				[
+					'name'=>'fon',
+				], 
+				[
+					'name'=>'sai',
+				], 
+				[
+					'name'=>'beer',
+				]
+			];
+			foreach ($names as $key => $name) {
+			$data = [];
+			$data['type'] = 'bubble';
+			$data['direction'] = 'ltr';
+			$data['hero']['type'] = 'image';
+			$data['hero']['url'] = 'https://lh3.googleusercontent.com/proxy/-1c7kpqSBd9MstpLoL1SssBqYrwCIFRJEO0GHycFDq7ZfioJKWjNkF1Qn7jex6Z18Kr51k_W2Oa5vHimHAIDDMVdGQbvjHHu6tKcXSWQxfuOT8NSvjOfZGTi1VR8e9aYNA_y';
+			$data['hero']['align'] = 'center';
+			$data['hero']['size'] = 'full';
+			$data['hero']['aspectRatio'] = '4:3';
+			$data['hero']['aspectMode'] = 'cover';
+			$data['body']['type'] = 'box';
+			$data['body']['layout'] = 'vertical';
+
+			$data['body']['contents'][0]['type'] = 'text';
+			$data['body']['contents'][0]['text'] = $name['name'];
+			$data['body']['contents'][0]['size'] = 'lg';
+			$data['body']['contents'][0]['weight'] = 'bold';
+			$data['body']['contents'][0]['color'] = '#000000';
+			$data['body']['contents'][0]['wrap'] = true;
+
+			$data['body']['contents'][1]['type'] = 'text';
+			$data['body']['contents'][1]['text'] = 'ทุกวัน';
+			$data['body']['contents'][1]['margin'] = 'sm';
+			$data['body']['contents'][1]['align'] = 'start';
+			$data['body']['contents'][1]['color'] = '#B9B9B9';
+			$data['body']['contents'][1]['wrap'] = true;
+
+			$data['body']['contents'][2]['type'] = 'text';
+			$data['body']['contents'][2]['text'] = '1,000.00 ฿';
+			$data['body']['contents'][2]['margin'] = 'xl';
+			$data['body']['contents'][2]['size'] = 'lg';
+			$data['body']['contents'][2]['weight'] = 'bold';
+			$data['body']['contents'][2]['color'] = '#3361F4';
+			$data['body']['contents'][2]['wrap'] = true;
+
+			$data['body']['contents'][3]['type'] = 'spacer';
+			$data['body']['contents'][3]['sizes'] = 'xl';
+
+			$service[] = $data;
+			}
+			
+			$header['contents']['contents'] = $service;
+			$messages = json_decode(file_get_contents("header.json"),true);
+		}
+		
+		// Get replyToken
+		$replyToken = $event['replyToken'];
+		$url = 'https://api.line.me/v2/bot/message/reply';
+		$data = [
+			'replyToken' => $replyToken,
+			'messages' => [$messages],
+		];
+		$post = json_encode($data);
+		$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+		$result = curl_exec($ch);
+		curl_close($ch);
+
+		echo $result . "\r\n";
 	}
 }
 echo "OK";
