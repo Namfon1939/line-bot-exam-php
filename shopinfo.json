@@ -101,9 +101,9 @@
           {
             "type": "button",
             "action": {
-              "type": "uri",
+              "type": "text",
               "label": "โทรออก",
-              "uri": "https://linecorp.com"
+              "text": "0815960912"
             },
             "height": "sm",
             "style": "link"
