@@ -101,10 +101,9 @@
           {
             "type": "button",
             "action": {
-              "type": "postback",
+              "type": "uri",
               "label": "โทรออก",
-              "text": "0815960912",
-              "data": "call"
+              "uri": "0815960912"
             }
           },
           {
