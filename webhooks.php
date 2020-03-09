@@ -259,8 +259,8 @@ if (!is_null($events['events'])) {
 			];
 			
 			// $header['contents']['contents'] = $service;
-			// $messages = json_decode(file_get_contents("header.json"),true);
-			$messages = $service;
+			$messages = json_decode(file_get_contents("shopinfo.json"),true);
+			//$messages = $service;
 		}
 		
 		// Get replyToken
