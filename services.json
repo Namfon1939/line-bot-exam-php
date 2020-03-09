@@ -1,0 +1,51 @@
+{
+    "type": "flex",
+    "altText": "Flex Message",
+    "contents": {
+      "type": "bubble",
+      "direction": "ltr",
+      "hero": {
+        "type": "image",
+        "url": "https://developers.line.biz/assets/images/services/bot-designer-icon.png",
+        "align": "center",
+        "size": "full",
+        "aspectRatio": "4:3",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "@service_name",
+            "size": "lg",
+            "weight": "bold",
+            "color": "#000000",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "@weekly",
+            "margin": "sm",
+            "align": "start",
+            "color": "#B9B9B9",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "@totol_price ฿",
+            "margin": "xl",
+            "size": "lg",
+            "weight": "bold",
+            "color": "#3361F4",
+            "wrap": true
+          },
+          {
+            "type": "spacer",
+            "size": "xl"
+          }
+        ]
+      }
+    }
+  }

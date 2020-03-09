@@ -1,0 +1,136 @@
+{
+    "type": "flex",
+    "altText": "Flex Message",
+    "contents": {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "url": "https://f.ptcdn.info/945/029/000/1427894585-guccih-o.jpg",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover",
+        "action": {
+          "type": "uri",
+          "label": "Line",
+          "uri": "https://linecorp.com/"
+        }
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Brown Cafe",
+            "size": "xl",
+            "weight": "bold"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "spacing": "sm",
+            "margin": "lg",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xl",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://cdn3.iconfinder.com/data/icons/unicons-vector-icons-pack/32/phone-512.png"
+                  },
+                  {
+                    "type": "text",
+                    "text": "081-232-5559",
+                    "flex": 5,
+                    "size": "sm",
+                    "color": "#666666",
+                    "wrap": true
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xl",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://cdn3.iconfinder.com/data/icons/unicons-vector-icons-pack/32/phone-512.png"
+                  },
+                  {
+                    "type": "text",
+                    "text": "123/35 ข้างโรงแรมเชียงใหมภูคํา",
+                    "flex": 5,
+                    "size": "sm",
+                    "color": "#666666",
+                    "wrap": true
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "xl",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://cdn3.iconfinder.com/data/icons/unicons-vector-icons-pack/32/phone-512.png"
+                  },
+                  {
+                    "type": "text",
+                    "text": "จันทร์ - ศุกร์, 08:00-18:00 น.",
+                    "flex": 5,
+                    "size": "sm",
+                    "color": "#666666",
+                    "wrap": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "flex": 0,
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "โทรออก",
+              "uri": "https://linecorp.com"
+            },
+            "height": "sm",
+            "style": "link"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "นำทาง",
+              "uri": "https://linecorp.com"
+            },
+            "height": "sm",
+            "style": "link"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "เพิ่มเติม",
+              "uri": "https://linecorp.com"
+            }
+          },
+          {
+            "type": "spacer",
+            "size": "sm"
+          }
+        ]
+      }
+    }
+  }

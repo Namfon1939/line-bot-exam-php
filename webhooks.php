@@ -15,6 +15,65 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['text'] == 'services') {
+			// $service = [];
+			// $names = [
+			// 	[
+			// 		'name'=>'tew',
+			// 	],
+			// 	[
+			// 		'name'=>'fon',
+			// 	], 
+			// 	[
+			// 		'name'=>'sai',
+			// 	], 
+			// 	[
+			// 		'name'=>'beer',
+			// 	]
+			// ];
+			// foreach ($names as $key => $name) {
+			// 	$data = [];
+			// 	$data['type'] = 'bubble';
+			// 	$data['direction'] = 'ltr';
+			// 	$data['hero']['type'] = 'image';
+			// 	$data['hero']['url'] = 'https://lh3.googleusercontent.com/proxy/-1c7kpqSBd9MstpLoL1SssBqYrwCIFRJEO0GHycFDq7ZfioJKWjNkF1Qn7jex6Z18Kr51k_W2Oa5vHimHAIDDMVdGQbvjHHu6tKcXSWQxfuOT8NSvjOfZGTi1VR8e9aYNA_y';
+			// 	$data['hero']['align'] = 'center';
+			// 	$data['hero']['size'] = 'full';
+			// 	$data['hero']['aspectRatio'] = '4:3';
+			// 	$data['hero']['aspectMode'] = 'cover';
+			// 	$data['body']['type'] = 'box';
+			// 	$data['body']['layout'] = 'vertical';
+
+			// 	$data['body']['contents'][0]['type'] = 'text';
+			// 	$data['body']['contents'][0]['text'] = $name['name'];
+			// 	$data['body']['contents'][0]['size'] = 'lg';
+			// 	$data['body']['contents'][0]['weight'] = 'bold';
+			// 	$data['body']['contents'][0]['color'] = '#000000';
+			// 	$data['body']['contents'][0]['wrap'] = true;
+
+			// 	$data['body']['contents'][1]['type'] = 'text';
+			// 	$data['body']['contents'][1]['text'] = 'ทุกวัน';
+			// 	$data['body']['contents'][1]['margin'] = 'sm';
+			// 	$data['body']['contents'][1]['align'] = 'start';
+			// 	$data['body']['contents'][1]['color'] = '#B9B9B9';
+			// 	$data['body']['contents'][1]['wrap'] = true;
+
+			// 	$data['body']['contents'][2]['type'] = 'text';
+			// 	$data['body']['contents'][2]['text'] = '1,000.00 ฿';
+			// 	$data['body']['contents'][2]['margin'] = 'xl';
+			// 	$data['body']['contents'][2]['size'] = 'lg';
+			// 	$data['body']['contents'][2]['weight'] = 'bold';
+			// 	$data['body']['contents'][2]['color'] = '#3361F4';
+			// 	$data['body']['contents'][2]['wrap'] = true;
+
+			// 	$data['body']['contents'][3]['type'] = 'spacer';
+			// 	$data['body']['contents'][3]['sizes'] = 'xl';
+
+			// 	$service[] = $data;
+			// }
+			
+			// $header['contents']['contents'] = $service;
+			// $messages = json_decode(file_get_contents("header.json"),true);
+
 			$service_json = json_decode(file_get_contents("services.json"),true);
 			$service_json['contents']['hero']['url'] = 'https://lh3.googleusercontent.com/proxy/-1c7kpqSBd9MstpLoL1SssBqYrwCIFRJEO0GHycFDq7ZfioJKWjNkF1Qn7jex6Z18Kr51k_W2Oa5vHimHAIDDMVdGQbvjHHu6tKcXSWQxfuOT8NSvjOfZGTi1VR8e9aYNA_y';
 			$service_json['contents']['body']['contents'][0]['text'] = 'นวดฝ่าเท้า';
@@ -60,61 +119,144 @@ if (!is_null($events['events'])) {
 			}
 		}
 		if ($event['type'] == 'message' && $event['message']['text'] == 'shopinfo') {
-			$service = [];
-			$names = [
+			$service = [
 				[
-					'name'=>'tew',
-				],
-				[
-					'name'=>'fon',
-				], 
-				[
-					'name'=>'sai',
-				], 
-				[
-					'name'=>'beer',
-				]
+					"type" => "flex",
+					"altText" => "Flex Message",
+					"contents" => [
+					  "type" => "bubble",
+					  "hero" => [
+						"type" => "image",
+						"url" => "https://f.ptcdn.info/945/029/000/1427894585-guccih-o.jpg",
+						"size" => "full",
+						"aspectRatio" => "20:13",
+						"aspectMode" => "cover",
+						"action" => [
+						  "type" => "uri",
+						  "label" => "Line",
+						  "uri" => "https://linecorp.com/"
+						]
+					  ],
+					  "body" => [
+						"type" => "box",
+						"layout" => "vertical",
+						"contents" => [
+						  [
+							"type" => "text",
+							"text" => "Brown Cafe",
+							"size" => "xl",
+							"weight" => "bold"
+						  ],
+						  [
+							"type" => "box",
+							"layout" => "vertical",
+							"spacing" => "sm",
+							"margin" => "lg",
+							"contents" => [
+							  [
+								"type" => "box",
+								"layout" => "baseline",
+								"spacing" => "xl",
+								"contents" => [
+								  [
+									"type" => "icon",
+									"url" => "https://cdn3.iconfinder.com/data/icons/unicons-vector-icons-pack/32/phone-512.png"
+								  ],
+								  [
+									"type" => "text",
+									"text" => "081-232-5559",
+									"flex" => 5,
+									"size" => "sm",
+									"color" => "#666666",
+									"wrap" => true
+								  ]
+								]
+							  ],
+							  [
+								"type" => "box",
+								"layout" => "baseline",
+								"spacing" => "xl",
+								"contents" => [
+								  [
+									"type" => "icon",
+									"url" => "https://cdn3.iconfinder.com/data/icons/unicons-vector-icons-pack/32/phone-512.png"
+								  ],
+								  [
+									"type" => "text",
+									"text" => "123/35 ข้างโรงแรมเชียงใหมภูคํา",
+									"flex" => 5,
+									"size" => "sm",
+									"color" => "#666666",
+									"wrap" => true
+								  ]
+								]
+							  ],
+							  [
+								"type" => "box",
+								"layout" => "baseline",
+								"spacing" => "xl",
+								"contents" => [
+								  [
+									"type" => "icon",
+									"url" => "https://cdn3.iconfinder.com/data/icons/unicons-vector-icons-pack/32/phone-512.png"
+								  ],
+								  [
+									"type"=> "text",
+									"text" => "จันทร์ - ศุกร์, 08:00-18:00 น.",
+									"flex" => 5,
+									"size" => "sm",
+									"color" => "#666666",
+									"wrap" => true
+								  ]
+								]
+							  ]
+							]
+						  ]
+						]
+					  ],
+					  "footer" => [
+						"type" => "box",
+						"layout" => "vertical",
+						"flex" => 0,
+						"spacing" => "sm",
+						"contents" => [
+						  [
+							"type" => "button",
+							"action" => [
+							  "type" => "uri",
+							  "label" => "โทรออก",
+							  "uri" => "https://linecorp.com"
+							],
+							"height" => "sm",
+							"style" => "link"
+						  ],
+						  [
+							"type" => "button",
+							"action" => [
+							  "type" => "uri",
+							  "label" => "นำทาง",
+							  "uri" => "https://linecorp.com"
+							],
+							"height" => "sm",
+							"style" => "link"
+						  ],
+						  [
+							"type" => "button",
+							"action" => [
+							  "type" => "uri",
+							  "label" => "เพิ่มเติม",
+							  "uri" => "https://linecorp.com"
+							]
+						  ],
+						  [
+							"type" => "spacer",
+							"size" => "sm"
+						  ]
+						]
+					  ]
+					]
+				  ]
 			];
-			foreach ($names as $key => $name) {
-			$data = [];
-			$data['type'] = 'bubble';
-			$data['direction'] = 'ltr';
-			$data['hero']['type'] = 'image';
-			$data['hero']['url'] = 'https://lh3.googleusercontent.com/proxy/-1c7kpqSBd9MstpLoL1SssBqYrwCIFRJEO0GHycFDq7ZfioJKWjNkF1Qn7jex6Z18Kr51k_W2Oa5vHimHAIDDMVdGQbvjHHu6tKcXSWQxfuOT8NSvjOfZGTi1VR8e9aYNA_y';
-			$data['hero']['align'] = 'center';
-			$data['hero']['size'] = 'full';
-			$data['hero']['aspectRatio'] = '4:3';
-			$data['hero']['aspectMode'] = 'cover';
-			$data['body']['type'] = 'box';
-			$data['body']['layout'] = 'vertical';
-
-			$data['body']['contents'][0]['type'] = 'text';
-			$data['body']['contents'][0]['text'] = $name['name'];
-			$data['body']['contents'][0]['size'] = 'lg';
-			$data['body']['contents'][0]['weight'] = 'bold';
-			$data['body']['contents'][0]['color'] = '#000000';
-			$data['body']['contents'][0]['wrap'] = true;
-
-			$data['body']['contents'][1]['type'] = 'text';
-			$data['body']['contents'][1]['text'] = 'ทุกวัน';
-			$data['body']['contents'][1]['margin'] = 'sm';
-			$data['body']['contents'][1]['align'] = 'start';
-			$data['body']['contents'][1]['color'] = '#B9B9B9';
-			$data['body']['contents'][1]['wrap'] = true;
-
-			$data['body']['contents'][2]['type'] = 'text';
-			$data['body']['contents'][2]['text'] = '1,000.00 ฿';
-			$data['body']['contents'][2]['margin'] = 'xl';
-			$data['body']['contents'][2]['size'] = 'lg';
-			$data['body']['contents'][2]['weight'] = 'bold';
-			$data['body']['contents'][2]['color'] = '#3361F4';
-			$data['body']['contents'][2]['wrap'] = true;
-
-			$data['body']['contents'][3]['type'] = 'spacer';
-			$data['body']['contents'][3]['sizes'] = 'xl';
-
-			$service[] = $data;
-			}
 			
 			$header['contents']['contents'] = $service;
 			$messages = json_decode(file_get_contents("header.json"),true);

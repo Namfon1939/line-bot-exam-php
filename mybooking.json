@@ -1,0 +1,145 @@
+{
+    "type": "flex",
+    "altText": "Flex Message",
+    "contents": {
+      "type": "bubble",
+      "direction": "ltr",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "@code",
+            "size": "xl",
+            "align": "start",
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "@service_name",
+            "margin": "md",
+            "size": "lg",
+            "align": "start",
+            "weight": "bold",
+            "color": "#000000",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "@datetime",
+            "margin": "sm",
+            "size": "xs",
+            "align": "start",
+            "color": "#9F9B9B",
+            "wrap": true
+          }
+        ]
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "separator",
+            "margin": "xl",
+            "color": "#DFDFDF"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "margin": "xl",
+            "contents": [
+              {
+                "type": "text",
+                "text": "@amount",
+                "flex": 1,
+                "size": "xs",
+                "color": "#9F9B9B",
+                "wrap": true
+              },
+              {
+                "type": "text",
+                "text": "@price",
+                "size": "xs",
+                "align": "end",
+                "weight": "bold",
+                "wrap": true
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "xl",
+            "color": "#DFDFDF"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "margin": "xxl",
+            "contents": [
+              {
+                "type": "text",
+                "text": "ผู้จอง:",
+                "size": "sm",
+                "color": "#9F9B9B",
+                "wrap": true
+              },
+              {
+                "type": "text",
+                "text": "@customer_name",
+                "size": "sm",
+                "align": "end",
+                "color": "#4E4D4D",
+                "wrap": true
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "margin": "lg",
+            "contents": [
+              {
+                "type": "text",
+                "text": "หมายเหตุ:",
+                "color": "#9F9B9B"
+              },
+              {
+                "type": "text",
+                "text": "@note",
+                "size": "sm",
+                "align": "end",
+                "color": "#4E4D4D",
+                "wrap": true
+              }
+            ]
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "spacer",
+            "size": "xl"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "postback",
+              "label": "ยกเลิกการจอง",
+              "displayText": "@cancel_text",
+              "data": "0"
+            },
+            "color": "#EE6868"
+          },
+          {
+            "type": "spacer",
+            "size": "xxl"
+          }
+        ]
+      }
+    }
+  }

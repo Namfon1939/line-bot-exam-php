@@ -1,0 +1,49 @@
+{
+  "type": "flex",
+  "altText": "Flex Message",
+  "contents": {
+    "type": "bubble",
+    "direction": "ltr",
+    "header": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "คุณต้องการที่จะยกเลิกการจอง",
+          "align": "center"
+        }
+      ]
+    },
+    "footer": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "button",
+              "action": {
+                "type": "postback",
+                "label": "Yes",
+                "text": "Yes",
+                "data": "1"
+              }
+            },
+            {
+              "type": "button",
+              "action": {
+                "type": "postback",
+                "label": "No",
+                "text": "No",
+                "data": "2"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
