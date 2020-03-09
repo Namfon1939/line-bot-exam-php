@@ -103,7 +103,7 @@
             "action": {
               "type": "uri",
               "label": "โทรออก",
-              "uri": "0815960912"
+              "uri": "https://linecorp.com"
             },
             "height": "sm",
             "style": "link"
