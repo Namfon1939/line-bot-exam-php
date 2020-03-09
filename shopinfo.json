@@ -101,12 +101,11 @@
           {
             "type": "button",
             "action": {
-              "type": "uri",
-              "label": "โทรออก",
-              "uri": "https://linecorp.com"
-            },
-            "height": "sm",
-            "style": "link"
+              "type": "postback",
+              "label": "0815960912",
+              "text": "0815960912",
+              "data": "0815960912"
+            }
           },
           {
             "type": "button",
