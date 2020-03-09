@@ -119,8 +119,8 @@ if (!is_null($events['events'])) {
 			}
 		}
 		if ($event['type'] == 'message' && $event['message']['text'] == 'shopinfo') {
-			$shopinfi_json = json_decode(file_get_contents("shopinfo.json"),true);
-			$messages = $shopinfi_json;
+			$shopinfo_json = json_decode(file_get_contents("shopinfo.json"),true);
+			$messages = $shopinfo_json;
 		}
 		
 		// Get replyToken
