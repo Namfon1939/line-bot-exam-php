@@ -258,8 +258,9 @@ if (!is_null($events['events'])) {
 				  ]
 			];
 			
-			$header['contents']['contents'] = $service;
-			$messages = json_decode(file_get_contents("header.json"),true);
+			// $header['contents']['contents'] = $service;
+			// $messages = json_decode(file_get_contents("header.json"),true);
+			$messages = json_encode($service);
 		}
 		
 		// Get replyToken
