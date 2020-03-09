@@ -102,8 +102,8 @@
             "type": "button",
             "action": {
               "type": "postback",
-              "label": "0815960912",
-              "text": "0815960912",
+              "label": "โทรออก",
+              "text": "โทรออก",
               "data": "0815960912"
             }
           },
