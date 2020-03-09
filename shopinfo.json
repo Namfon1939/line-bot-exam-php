@@ -103,8 +103,8 @@
             "action": {
               "type": "postback",
               "label": "โทรออก",
-              "text": "โทรออก",
-              "data": "0815960912"
+              "text": "0815960912",
+              "data": "call"
             }
           },
           {
