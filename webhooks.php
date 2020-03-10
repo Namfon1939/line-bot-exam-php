@@ -32,51 +32,69 @@ if (!is_null($events['events'])) {
 					"name" => "มานัส ทิพนาค",
 				],
 			];
-			
-			$header_json = json_decode(file_get_contents("header.json"),true);
-			$header_json['contents']['contents'] = [];
-			//foreach ($serviceData as $info){
-				//$data = [];
-				$header_json['contents']['contents']['type'] = 'bubble';
-				$header_json['contents']['contents']['direction'] = 'ltr';
-				$header_json['contents']['contents']['hero']['type'] = 'image';
-				$header_json['contents']['contents']['hero']['url'] = 'https://lh3.googleusercontent.com/proxy/-1c7kpqSBd9MstpLoL1SssBqYrwCIFRJEO0GHycFDq7ZfioJKWjNkF1Qn7jex6Z18Kr51k_W2Oa5vHimHAIDDMVdGQbvjHHu6tKcXSWQxfuOT8NSvjOfZGTi1VR8e9aYNA_y';
-				$header_json['contents']['contents']['hero']['align'] = 'center';
-				$header_json['contents']['contents']['hero']['size'] = 'full';
-				$header_json['contents']['contents']['hero']['aspectRatio'] = '4:3';
-				$header_json['contents']['contents']['hero']['aspectMode'] = 'cover';
-				$header_json['contents']['contents']['body']['type'] = 'box';
-				$header_json['contents']['contents']['body']['layout'] = 'vertical';
-	
-				$header_json['contents']['contents']['body']['contents'][0]['type'] = 'text';
-				$header_json['contents']['contents']['body']['contents'][0]['text'] = '@name';
-				$header_json['contents']['contents']['body']['contents'][0]['size'] = 'lg';
-				$header_json['contents']['contents']['body']['contents'][0]['weight'] = 'bold';
-				$header_json['contents']['contents']['body']['contents'][0]['color'] = '#000000';
-				$header_json['contents']['contents']['body']['contents'][0]['wrap'] = true;
-	
-				$header_json['contents']['contents']['body']['contents'][1]['type'] = 'text';
-				$header_json['contents']['contents']['body']['contents'][1]['text'] = 'ทุกวัน';
-				$header_json['contents']['contents']['body']['contents'][1]['margin'] = 'sm';
-				$header_json['contents']['contents']['body']['contents'][1]['align'] = 'start';
-				$header_json['contents']['contents']['body']['contents'][1]['color'] = '#B9B9B9';
-				$header_json['contents']['contents']['body']['contents'][1]['wrap'] = true;
-	
-				$header_json['contents']['contents']['body']['contents'][2]['type'] = 'text';
-				$header_json['contents']['contents']['body']['contents'][2]['text'] = '1,000.00 ฿';
-				$header_json['contents']['contents']['body']['contents'][2]['margin'] = 'xl';
-				$header_json['contents']['contents']['body']['contents'][2]['size'] = 'lg';
-				$header_json['contents']['contents']['body']['contents'][2]['weight'] = 'bold';
-				$header_json['contents']['contents']['body']['contents'][2]['color'] = '#3361F4';
-				$header_json['contents']['contents']['body']['contents'][2]['wrap'] = true;
-	
-				$header_json['contents']['contents']['body']['contents'][3]['type'] = 'spacer';
-				$header_json['contents']['contents']['body']['contents'][3]['sizes'] = 'xl';
-	
-				//$header_json['contents']['contents'][] = $data;
-			//}
-			$messages = $header_json;
 
+			$dataja = [];
+			foreach ($serviceData as $key => $data) {
+				$dataja[] = [
+					"type" => "bubble",
+					"direction" => "ltr",
+					"hero" => [
+						"type" => "image",
+						"url" => "https://lh3.googleusercontent.com/proxy/-1c7kpqSBd9MstpLoL1SssBqYrwCIFRJEO0GHycFDq7ZfioJKWjNkF1Qn7jex6Z18Kr51k_W2Oa5vHimHAIDDMVdGQbvjHHu6tKcXSWQxfuOT8NSvjOfZGTi1VR8e9aYNA_y",
+						"align" => "center",
+						"size" => "full",
+						"aspectRatio" => "4:3",
+						"aspectMode" => "cover"
+					],
+					"body" => [
+						"type" => "box",
+						"layout" => "vertical",
+						"contents" => [
+							[
+							"type" => "text",
+							"text" => $data['name'],
+							"size" => "lg",
+							"weight" => "bold",
+							"color" => "#000000",
+							"wrap" => true
+							],
+							[
+							"type" => "text",
+							"text" => "ทุกวัน",
+							"margin" => "sm",
+							"align" => "start",
+							"color" => "#B9B9B9",
+							"wrap" => true
+							],
+							[
+							"type" => "text",
+							"text" => "1,000.00 ฿",
+							"margin" => "xl",
+							"size" => "lg",
+							"weight" => "bold",
+							"color" => "#3361F4",
+							"wrap" => true
+							],
+							[
+							"type" => "spacer",
+							"size" => "xl"
+							]
+						]
+					]
+				];
+			}
+
+			$service_json = [
+				"type" => "flex",
+				"altText" => "Flex Message",
+				"contents" => [
+					"type" => "carousel",
+					"contents" => $dataja
+				]
+			];
+
+			$messages = json_encode($service_json);
+			
 			// $service_json = json_decode(file_get_contents("services.json"),true);
 			// $service_json['contents']['hero']['url'] = 'https://lh3.googleusercontent.com/proxy/-1c7kpqSBd9MstpLoL1SssBqYrwCIFRJEO0GHycFDq7ZfioJKWjNkF1Qn7jex6Z18Kr51k_W2Oa5vHimHAIDDMVdGQbvjHHu6tKcXSWQxfuOT8NSvjOfZGTi1VR8e9aYNA_y';
 			// $service_json['contents']['body']['contents'][0]['text'] = 'นวดฝ่าเท้า';
