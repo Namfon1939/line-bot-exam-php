@@ -15,7 +15,6 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['text'] == 'services') {
-			$service = [];
 			$names = [
 				[
 					'name'=>'tew',
@@ -30,6 +29,7 @@ if (!is_null($events['events'])) {
 					'name'=>'beer',
 				]
 			];
+			$service = [];
 			foreach ($names as $key => $name) {
 				$data = [];
 				$data['type'] = 'bubble';
@@ -72,8 +72,7 @@ if (!is_null($events['events'])) {
 			}
 			
 			$header_json = json_decode(file_get_contents("header.json"),true);
-			$services = json_encode($service);
-			$header_json['contents']['contents'] = $services;
+			$header_json['contents']['contents'] = $service;
 			$messages = $header_json;
 
 			// $service_json = json_decode(file_get_contents("services.json"),true);
