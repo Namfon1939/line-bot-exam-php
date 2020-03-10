@@ -15,71 +15,73 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['text'] == 'services') {
-			// $service = [];
-			// $names = [
-			// 	[
-			// 		'name'=>'tew',
-			// 	],
-			// 	[
-			// 		'name'=>'fon',
-			// 	], 
-			// 	[
-			// 		'name'=>'sai',
-			// 	], 
-			// 	[
-			// 		'name'=>'beer',
-			// 	]
-			// ];
-			// foreach ($names as $key => $name) {
-			// 	$data = [];
-			// 	$data['type'] = 'bubble';
-			// 	$data['direction'] = 'ltr';
-			// 	$data['hero']['type'] = 'image';
-			// 	$data['hero']['url'] = 'https://lh3.googleusercontent.com/proxy/-1c7kpqSBd9MstpLoL1SssBqYrwCIFRJEO0GHycFDq7ZfioJKWjNkF1Qn7jex6Z18Kr51k_W2Oa5vHimHAIDDMVdGQbvjHHu6tKcXSWQxfuOT8NSvjOfZGTi1VR8e9aYNA_y';
-			// 	$data['hero']['align'] = 'center';
-			// 	$data['hero']['size'] = 'full';
-			// 	$data['hero']['aspectRatio'] = '4:3';
-			// 	$data['hero']['aspectMode'] = 'cover';
-			// 	$data['body']['type'] = 'box';
-			// 	$data['body']['layout'] = 'vertical';
+			$service = [];
+			$names = [
+				[
+					'name'=>'tew',
+				],
+				[
+					'name'=>'fon',
+				], 
+				[
+					'name'=>'sai',
+				], 
+				[
+					'name'=>'beer',
+				]
+			];
+			foreach ($names as $key => $name) {
+				$data = [];
+				$data['type'] = 'bubble';
+				$data['direction'] = 'ltr';
+				$data['hero']['type'] = 'image';
+				$data['hero']['url'] = 'https://lh3.googleusercontent.com/proxy/-1c7kpqSBd9MstpLoL1SssBqYrwCIFRJEO0GHycFDq7ZfioJKWjNkF1Qn7jex6Z18Kr51k_W2Oa5vHimHAIDDMVdGQbvjHHu6tKcXSWQxfuOT8NSvjOfZGTi1VR8e9aYNA_y';
+				$data['hero']['align'] = 'center';
+				$data['hero']['size'] = 'full';
+				$data['hero']['aspectRatio'] = '4:3';
+				$data['hero']['aspectMode'] = 'cover';
+				$data['body']['type'] = 'box';
+				$data['body']['layout'] = 'vertical';
 
-			// 	$data['body']['contents'][0]['type'] = 'text';
-			// 	$data['body']['contents'][0]['text'] = $name['name'];
-			// 	$data['body']['contents'][0]['size'] = 'lg';
-			// 	$data['body']['contents'][0]['weight'] = 'bold';
-			// 	$data['body']['contents'][0]['color'] = '#000000';
-			// 	$data['body']['contents'][0]['wrap'] = true;
+				$data['body']['contents'][0]['type'] = 'text';
+				$data['body']['contents'][0]['text'] = $name['name'];
+				$data['body']['contents'][0]['size'] = 'lg';
+				$data['body']['contents'][0]['weight'] = 'bold';
+				$data['body']['contents'][0]['color'] = '#000000';
+				$data['body']['contents'][0]['wrap'] = true;
 
-			// 	$data['body']['contents'][1]['type'] = 'text';
-			// 	$data['body']['contents'][1]['text'] = 'ทุกวัน';
-			// 	$data['body']['contents'][1]['margin'] = 'sm';
-			// 	$data['body']['contents'][1]['align'] = 'start';
-			// 	$data['body']['contents'][1]['color'] = '#B9B9B9';
-			// 	$data['body']['contents'][1]['wrap'] = true;
+				$data['body']['contents'][1]['type'] = 'text';
+				$data['body']['contents'][1]['text'] = 'ทุกวัน';
+				$data['body']['contents'][1]['margin'] = 'sm';
+				$data['body']['contents'][1]['align'] = 'start';
+				$data['body']['contents'][1]['color'] = '#B9B9B9';
+				$data['body']['contents'][1]['wrap'] = true;
 
-			// 	$data['body']['contents'][2]['type'] = 'text';
-			// 	$data['body']['contents'][2]['text'] = '1,000.00 ฿';
-			// 	$data['body']['contents'][2]['margin'] = 'xl';
-			// 	$data['body']['contents'][2]['size'] = 'lg';
-			// 	$data['body']['contents'][2]['weight'] = 'bold';
-			// 	$data['body']['contents'][2]['color'] = '#3361F4';
-			// 	$data['body']['contents'][2]['wrap'] = true;
+				$data['body']['contents'][2]['type'] = 'text';
+				$data['body']['contents'][2]['text'] = '1,000.00 ฿';
+				$data['body']['contents'][2]['margin'] = 'xl';
+				$data['body']['contents'][2]['size'] = 'lg';
+				$data['body']['contents'][2]['weight'] = 'bold';
+				$data['body']['contents'][2]['color'] = '#3361F4';
+				$data['body']['contents'][2]['wrap'] = true;
 
-			// 	$data['body']['contents'][3]['type'] = 'spacer';
-			// 	$data['body']['contents'][3]['sizes'] = 'xl';
+				$data['body']['contents'][3]['type'] = 'spacer';
+				$data['body']['contents'][3]['sizes'] = 'xl';
 
-			// 	$service[] = $data;
-			// }
+				$service[] = $data;
+			}
 			
-			// $header['contents']['contents'] = $service;
-			// $messages = json_decode(file_get_contents("header.json"),true);
+			$header_json = json_decode(file_get_contents("header.json"),true);
+			$services = json_encode($service);
+			$header_json['contents']['contents'] = $services;
+			$messages = $header_json;
 
-			$service_json = json_decode(file_get_contents("services.json"),true);
-			$service_json['contents']['hero']['url'] = 'https://lh3.googleusercontent.com/proxy/-1c7kpqSBd9MstpLoL1SssBqYrwCIFRJEO0GHycFDq7ZfioJKWjNkF1Qn7jex6Z18Kr51k_W2Oa5vHimHAIDDMVdGQbvjHHu6tKcXSWQxfuOT8NSvjOfZGTi1VR8e9aYNA_y';
-			$service_json['contents']['body']['contents'][0]['text'] = 'นวดฝ่าเท้า';
-			$service_json['contents']['body']['contents'][1]['text'] = 'จ อ พฤ ศ';
-			$service_json['contents']['body']['contents'][2]['text'] = '9,999 ฿';
-			$messages = $service_json;
+			// $service_json = json_decode(file_get_contents("services.json"),true);
+			// $service_json['contents']['hero']['url'] = 'https://lh3.googleusercontent.com/proxy/-1c7kpqSBd9MstpLoL1SssBqYrwCIFRJEO0GHycFDq7ZfioJKWjNkF1Qn7jex6Z18Kr51k_W2Oa5vHimHAIDDMVdGQbvjHHu6tKcXSWQxfuOT8NSvjOfZGTi1VR8e9aYNA_y';
+			// $service_json['contents']['body']['contents'][0]['text'] = 'นวดฝ่าเท้า';
+			// $service_json['contents']['body']['contents'][1]['text'] = 'จ อ พฤ ศ';
+			// $service_json['contents']['body']['contents'][2]['text'] = '9,999 ฿';
+			// $messages = $service_json;
 		}
 		if ($event['type'] == 'message' && $event['message']['text'] == 'promotions') {
 			$messages = json_decode(file_get_contents("promotions.json"),true);
