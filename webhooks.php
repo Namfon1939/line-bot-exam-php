@@ -34,7 +34,7 @@ if (!is_null($events['events'])) {
 			];
 			
 			$header_json = json_decode(file_get_contents("header.json"),true);
-			//$header_json['contents']['contents'] = [];
+			$header_json['contents']['contents'] = [];
 			//foreach ($serviceData as $info){
 				//$data = [];
 				$header_json['contents']['contents']['type'] = 'bubble';
