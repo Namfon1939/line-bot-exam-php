@@ -224,7 +224,7 @@ if (!is_null($events['events'])) {
 						"action": {
 						  "type": "uri",
 						  "label": "โทรออก",
-						  "uri": "tel:+66839651517"
+						  "uri": "tel:0839651517"
 						}
 					  },
 					  {
