@@ -1,8 +1,8 @@
 {
-    "type": "flex",
-    "altText": "Flex Message",
-    "contents": {
-      "type": "carousel",
-      "contents": []
-    }
+  "type": "flex",
+  "altText": "Flex Message",
+  "contents": {
+    "type": "carousel",
+    "contents": []
   }
+}

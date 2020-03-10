@@ -29,7 +29,9 @@ if (!is_null($events['events'])) {
 					'name'=>'beer',
 				]
 			];
-			$service = [];
+			
+			$header_json = json_decode(file_get_contents("header.json"),true);
+			$header_json['contents']['contents'] = [];
 			foreach ($names as $key => $name) {
 				$data = [];
 				$data['type'] = 'bubble';
@@ -68,11 +70,8 @@ if (!is_null($events['events'])) {
 				$data['body']['contents'][3]['type'] = 'spacer';
 				$data['body']['contents'][3]['sizes'] = 'xl';
 
-				$service[] = $data;
+				$header_json['contents']['contents'][] = $data;
 			}
-			
-			$header_json = json_decode(file_get_contents("header.json"),true);
-			$header_json['contents']['contents'] = $service;
 			$messages = $header_json;
 
 			// $service_json = json_decode(file_get_contents("services.json"),true);
