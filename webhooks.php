@@ -17,19 +17,24 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['text'] == 'services') {
 			$serviceData = [
 				[
-					"name" => "สิตา ธนาฤกษ์มงคล",
+					"name" => "สปาหน้า",
+					"price" => 1000,
 				],
 				[
-					"name" => "สุชาติ เชยเดช",
+					"name" => "นวดเท้า",
+					"price" => 200,
 				],
 				[
-					"name" => "รุ่งนภา เกษณา",
+					"name" => "นวดกำจัดเซลลูไลท์",
+					"price" => 2000,
 				],
 				[
-					"name" => "เสรี แก้วประสิทธิ์",
+					"name" => "ซาวน่า",
+					"price" => 1500,
 				],
 				[
-					"name" => "มานัส ทิพนาค",
+					"name" => "ตัดผม",
+					"price" => 500,
 				],
 			];
 
@@ -68,7 +73,7 @@ if (!is_null($events['events'])) {
 							],
 							[
 							"type" => "text",
-							"text" => "1,000.00 ฿",
+							"text" => $data['price']." ฿",
 							"margin" => "xl",
 							"size" => "lg",
 							"weight" => "bold",
