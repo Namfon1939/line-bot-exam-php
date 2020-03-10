@@ -34,8 +34,8 @@ if (!is_null($events['events'])) {
 			];
 			
 			$header_json = json_decode(file_get_contents("header.json"),true);
-			$header_json['contents']['contents'] = [];
-			foreach ($serviceData as $info){
+			//$header_json['contents']['contents'] = [];
+			//foreach ($serviceData as $info){
 				$data = [];
 				$data['type'] = 'bubble';
 				$data['direction'] = 'ltr';
@@ -49,7 +49,7 @@ if (!is_null($events['events'])) {
 				$data['body']['layout'] = 'vertical';
 	
 				$data['body']['contents'][0]['type'] = 'text';
-				$data['body']['contents'][0]['text'] = $info['name'];
+				$data['body']['contents'][0]['text'] = '@name';
 				$data['body']['contents'][0]['size'] = 'lg';
 				$data['body']['contents'][0]['weight'] = 'bold';
 				$data['body']['contents'][0]['color'] = '#000000';
@@ -74,7 +74,7 @@ if (!is_null($events['events'])) {
 				$data['body']['contents'][3]['sizes'] = 'xl';
 	
 				$header_json['contents']['contents'][] = $data;
-			}
+			//}
 			$messages = $header_json;
 
 			// $service_json = json_decode(file_get_contents("services.json"),true);
