@@ -49,7 +49,12 @@ if (!is_null($events['events'])) {
 						"align" => "center",
 						"size" => "full",
 						"aspectRatio" => "4:3",
-						"aspectMode" => "cover"
+						"aspectMode" => "cover",
+						"action" => [
+							"type" => "uri",
+							"label" => "Line",
+							"uri" => "https://ashop.avalue.co.th/phpmyadmin/db_structure.php?server=1&db=avalue_ashop&token=8d7d7bc20f1fe6a544e0d97331766383"
+						]
 					],
 					"body" => [
 						"type" => "box",
