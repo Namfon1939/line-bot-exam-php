@@ -121,20 +121,19 @@ if (!is_null($events['events'])) {
 			$messages = json_decode(file_get_contents("promotions.json"),true);
 		}
 		if ($event['type'] == 'message' && $event['message']['text'] == 'mybooking') {
-			$url = 'https://api.line.me/v2/profile';
+			$url = 'https://api.line.me/v2/bot/profile';
+
 			$headers = array('Authorization: Bearer ' . $access_token);
 
 			$ch = curl_init($url);
-			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			//curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 			$result = curl_exec($ch);
 			curl_close($ch);
 
-			echo $result . "\r\n";
-			// dd($result);
+			// echo $result;
+			// // dd($result);
 
 			// $code = "#46547";
 			// $mybooking_json = json_decode(file_get_contents("mybooking.json"),true);
