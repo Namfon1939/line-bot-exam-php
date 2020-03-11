@@ -272,7 +272,7 @@ if (!is_null($events['events'])) {
 						"action": {
 						  "type": "uri",
 						  "label": "นำทาง",
-						  "uri": "https://www.google.co.th/maps/@18.7878649,98.9526804,18z"
+						  "uri": "https://www.google.co.th/maps/@18.7877873,98.9534804,18z/data=!4m2!10m1!1e2?hl=en&authuser=0"
 						},
 						"height": "sm",
 						"style": "link"
