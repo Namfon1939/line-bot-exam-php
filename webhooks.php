@@ -272,7 +272,7 @@ if (!is_null($events['events'])) {
 						"action": {
 						  "type": "uri",
 						  "label": "นำทาง",
-						  "uri": "https://linecorp.com"
+						  "uri": "https://www.google.co.th/maps/@18.7878649,98.9526804,18z"
 						},
 						"height": "sm",
 						"style": "link"
