@@ -121,7 +121,9 @@ if (!is_null($events['events'])) {
 			$messages = json_decode(file_get_contents("promotions.json"),true);
 		}
 		if ($event['type'] == 'message' && $event['message']['text'] == 'mybooking') {
-			$url = 'https://api.line.me/v2/bot/profile';
+			$userId = 'U7c2ed08b6a5297406ca5e18b050f8b18';
+
+			$url = 'https://api.line.me/v2/bot/profile/'.$userId;
 
 			$headers = array('Authorization: Bearer ' . $access_token);
 
