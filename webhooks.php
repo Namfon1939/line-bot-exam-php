@@ -282,7 +282,7 @@ if (!is_null($events['events'])) {
 						"action": {
 						  "type": "uri",
 						  "label": "เพิ่มเติม",
-						  "uri": "https://linecorp.com"
+						  "uri": "line://app/1639925368-G4m102RW?shop_id=1"
 						}
 					  },
 					  {
@@ -296,6 +296,8 @@ if (!is_null($events['events'])) {
 			$shopinfo_json = json_decode($shop_info);
 			$messages = $shopinfo_json;
 		}
+
+
 		
 		// Get replyToken
 		$replyToken = $event['replyToken'];
