@@ -132,7 +132,7 @@ if (!is_null($events['events'])) {
 								"action" => [
 								  "type" => "uri",
 								  "label" => "ทั้งหมด",
-								  "uri" => "line://app/1639925368-Pqw2Qd0O/?shop_id=". $shopQuery->id
+								  "uri" => "line://app/1639925368-Pqw2Qd0O/?shop_id=1"
 								]
 							  ],
 							  "body" => [
@@ -236,159 +236,159 @@ if (!is_null($events['events'])) {
 			];
 
 			$my_bookings = [];
-                    foreach ($bookingData as $key => $booking) {
-                    $my_bookings[] = [
-                        [
-                            "type" => "bubble",
-                            "direction" => "ltr",
-                            "header" => [
-                            "type" => "box",
-                            "layout" => "vertical",
-                            "contents" => [
-                                [
-                                "type" => "text",
-                                "text" => "#54545",
-                                "size" => "xl",
-                                "align" => "start",
-                                "weight" => "bold",
-                                "color" => "#262626"
-                                ],
-                                [
-                                "type" => "text",
-                                "text" => $booking["name"],
-                                "margin" => "md",
-                                "size" => "lg",
-                                "align" => "start",
-                                "weight" => "bold",
-                                "color" => "#262626",
-                                "wrap" => true
-                                ],
-                                [
-                                "type" => "text",
-                                "text" => $booking["date"].", ".$booking["time"],
-                                "margin" => "sm",
-                                "size" => "xs",
-                                "align" => "start",
-                                "color" => "#8C8C8C",
-                                "wrap" => true
-                                ]
-                            ]
-                            ],
-                            "body" => [
-                            "type" => "box",
-                            "layout" => "vertical",
-                            "contents" => [
-                                [
-                                "type" => "separator",
-                                "margin" => "xl",
-                                "color" => "#DFDFDF"
-                                ],
-                                [
-                                "type" => "box",
-                                "layout" => "baseline",
-                                "margin" => "xl",
-                                "contents" => [
-                                    [
-                                    "type" => "text",
-                                    "text" => "x".$booking["amount"],
-                                    "flex" => 1,
-                                    "size" => "xs",
-                                    "color" => "#8C8C8C",
-                                    "wrap" => true
-                                    ],
-                                    [
-                                    "type" => "text",
-                                    "text" => "฿".$booking["amount"] * $booking["price"],
-                                    "size" => "xs",
-                                    "align" => "end",
-                                    "weight" => "bold",
-                                    "color" => "#262626",
-                                    "wrap" => true
-                                    ]
-                                ]
-                                ],
-                                [
-                                "type" => "separator",
-                                "margin" => "xl",
-                                "color" => "#DFDFDF"
-                                ],
-                                [
-                                "type" => "box",
-                                "layout" => "baseline",
-                                "margin" => "xxl",
-                                "contents" => [
-                                    [
-                                    "type" => "text",
-                                    "text" => "ผู้จอง:",
-                                    "size" => "sm",
-                                    "color" => "#8C8C8C",
-                                    "wrap" => true
-                                    ],
-                                    [
-                                    "type" => "text",
-                                    "text" => $booking["customer_name"],
-                                    "size" => "sm",
-                                    "align" => "end",
-                                    "color" => "#262626",
-                                    "wrap" => true
-                                    ]
-                                ]
-                                ],
-                                [
-                                "type" => "box",
-                                "layout" => "baseline",
-                                "margin" => "lg",
-                                "contents" => [
-                                    [
-                                    "type" => "text",
-                                    "text" => "หมายเหตุ:",
-                                    "color" => "#8C8C8C"
-                                    ],
-                                    [
-                                    "type" => "text",
-                                    "text" => $booking["note"],
-                                    "size" => "sm",
-                                    "align" => "end",
-                                    "color" => "#262626",
-                                    "wrap" => true
-                                    ]
-                                ]
-                                ]
-                            ]
-                            ],
-                            "footer" => [
-                            "type" => "box",
-                            "layout" => "vertical",
-                            "contents" => [
-                                [
-                                "type" => "spacer",
-                                "size" => "xl"
-                                ],
-                                [
-                                "type" => "button",
-                                "action" => [
-                                    "type" => "postback",
-                                    "label" => "ยกเลิกการจอง",
-                                    "text" => "cancel",
-                                    "data" => "action=cancel&bookingId=1"
-                                ],
-                                "color" => "#FF3B30"
-                                ]
-                            ]
-                            ]
-                        ],
-                        ];
-                    }
+			foreach ($bookingData as $key => $booking) {
+			$my_bookings[] = [
+				[
+					"type" => "bubble",
+					"direction" => "ltr",
+					"header" => [
+					"type" => "box",
+					"layout" => "vertical",
+					"contents" => [
+						[
+						"type" => "text",
+						"text" => "#54545",
+						"size" => "xl",
+						"align" => "start",
+						"weight" => "bold",
+						"color" => "#262626"
+						],
+						[
+						"type" => "text",
+						"text" => $booking["name"],
+						"margin" => "md",
+						"size" => "lg",
+						"align" => "start",
+						"weight" => "bold",
+						"color" => "#262626",
+						"wrap" => true
+						],
+						[
+						"type" => "text",
+						"text" => $booking["date"].", ".$booking["time"],
+						"margin" => "sm",
+						"size" => "xs",
+						"align" => "start",
+						"color" => "#8C8C8C",
+						"wrap" => true
+						]
+					]
+					],
+					"body" => [
+					"type" => "box",
+					"layout" => "vertical",
+					"contents" => [
+						[
+						"type" => "separator",
+						"margin" => "xl",
+						"color" => "#DFDFDF"
+						],
+						[
+						"type" => "box",
+						"layout" => "baseline",
+						"margin" => "xl",
+						"contents" => [
+							[
+							"type" => "text",
+							"text" => "x".$booking["amount"],
+							"flex" => 1,
+							"size" => "xs",
+							"color" => "#8C8C8C",
+							"wrap" => true
+							],
+							[
+							"type" => "text",
+							"text" => "฿".$booking["amount"] * $booking["price"],
+							"size" => "xs",
+							"align" => "end",
+							"weight" => "bold",
+							"color" => "#262626",
+							"wrap" => true
+							]
+						]
+						],
+						[
+						"type" => "separator",
+						"margin" => "xl",
+						"color" => "#DFDFDF"
+						],
+						[
+						"type" => "box",
+						"layout" => "baseline",
+						"margin" => "xxl",
+						"contents" => [
+							[
+							"type" => "text",
+							"text" => "ผู้จอง:",
+							"size" => "sm",
+							"color" => "#8C8C8C",
+							"wrap" => true
+							],
+							[
+							"type" => "text",
+							"text" => $booking["customer_name"],
+							"size" => "sm",
+							"align" => "end",
+							"color" => "#262626",
+							"wrap" => true
+							]
+						]
+						],
+						[
+						"type" => "box",
+						"layout" => "baseline",
+						"margin" => "lg",
+						"contents" => [
+							[
+							"type" => "text",
+							"text" => "หมายเหตุ:",
+							"color" => "#8C8C8C"
+							],
+							[
+							"type" => "text",
+							"text" => $booking["note"],
+							"size" => "sm",
+							"align" => "end",
+							"color" => "#262626",
+							"wrap" => true
+							]
+						]
+						]
+					]
+					],
+					"footer" => [
+					"type" => "box",
+					"layout" => "vertical",
+					"contents" => [
+						[
+						"type" => "spacer",
+						"size" => "xl"
+						],
+						[
+						"type" => "button",
+						"action" => [
+							"type" => "postback",
+							"label" => "ยกเลิกการจอง",
+							"text" => "cancel",
+							"data" => "action=cancel&bookingId=1"
+						],
+						"color" => "#FF3B30"
+						]
+					]
+					]
+				],
+				];
+			}
 
-                    $my_booking_json = [
-                        "type" => "flex",
-                        "altText" => "Flex Message",
-                        "contents" => [
-                            "type" => "carousel",
-                            "contents" => $my_bookings
-                        ]
-                    ];
-                    $messages = $my_booking_json;
+			$my_booking_json = [
+				"type" => "flex",
+				"altText" => "Flex Message",
+				"contents" => [
+					"type" => "carousel",
+					"contents" => $my_bookings
+				]
+			];
+			$messages = $my_booking_json;
 		}
 		if ($event['type'] == 'message' && $event['message']['text'] == 'mybooking') {
 			$code = "#46547";
