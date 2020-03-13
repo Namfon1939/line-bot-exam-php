@@ -399,6 +399,7 @@ if (!is_null($events['events'])) {
 			$mybooking_json['contents']['footer']['contents'][1]['action']['displayText'] = "cancel";
 			$mybooking_json['contents']['footer']['contents'][1]['action']['data'] = 'action=cancel&booking='.$code;
 			// $text = $event['source']['userId'];
+			$messages = $mybooking_json;
 			// $messages = [
 			// 	'type' => 'text',
 			// 	'text' => $text
