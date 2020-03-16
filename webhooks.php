@@ -104,53 +104,53 @@ if (!is_null($events['events'])) {
 					];
 				}
 				if($key > 4){
-					$services = [
+					$dataja = [
 						"type" => "flex",
 						"altText" => "Flex Message",
 						"contents" => [
 							"type" => "bubble",
 							"direction" => "ltr",
 							"header" => [
-							"type" => "box",
-							"layout" => "vertical",
-							"contents" => [
-								[
-								"type" => "spacer",
-								"size" => "xxl"
+								"type" => "box",
+								"layout" => "vertical",
+								"contents" => [
+									[
+										"type" => "spacer",
+										"size" => "xxl"
+									]
 								]
-							]
 							],
 							"hero" => [
-							"type" => "image",
-							"url" => "https://firebasestorage.googleapis.com/v0/b/trackhilight.appspot.com/o/more.png?alt=media&token=29e4d90e-465a-4ea7-b4f2-b01df46b43d6",
-							"align" => "center",
-							"gravity" => "center",
-							"size" => "xl",
-							"aspectRatio" => "1:1",
-							"backgroundColor" => "#FFFFFF",
-							"action" => [
-								"type" => "uri",
-								"label" => "ทั้งหมด",
-								"uri" => "line://app/1639925368-Pqw2Qd0O/?shop_id=1"
-							]
+								"type" => "image",
+								"url" => "https://firebasestorage.googleapis.com/v0/b/trackhilight.appspot.com/o/more.png?alt=media&token=29e4d90e-465a-4ea7-b4f2-b01df46b43d6",
+								"align" => "center",
+								"gravity" => "center",
+								"size" => "xl",
+								"aspectRatio" => "1:1",
+								"backgroundColor" => "#FFFFFF",
+								"action" => [
+									"type" => "uri",
+									"label" => "ทั้งหมด",
+									"uri" => "line://app/1639925368-Pqw2Qd0O/?shop_id=1"
+								]
 							],
 							"body" => [
-							"type" => "box",
-							"layout" => "vertical",
-							"contents" => [
-								[
-								"type" => "spacer"
+								"type" => "box",
+								"layout" => "vertical",
+								"contents" => [
+									[
+										"type" => "spacer"
+									]
 								]
-							]
 							],
 							"footer" => [
-							"type" => "box",
-							"layout" => "horizontal",
-							"contents" => [
-								[
-								"type" => "spacer"
+								"type" => "box",
+								"layout" => "horizontal",
+								"contents" => [
+									[
+										"type" => "spacer"
+									]
 								]
-							]
 							]
 						]
 					];
@@ -176,7 +176,7 @@ if (!is_null($events['events'])) {
 			// $messages = $service_json;
 		}
 		if ($event['type'] == 'message' && $event['message']['text'] == 'promotions') {
-			$bookingData = [
+			$promotionData = [
 				[
 					"name" => "สปาหน้า",
 					"price" => 1000,
@@ -233,158 +233,185 @@ if (!is_null($events['events'])) {
 				],
 			];
 
-			$my_bookings = [];
-			foreach ($bookingData as $key => $booking) {
-			$my_bookings[] = [
-					"type" => "bubble",
-					"direction" => "ltr",
-					"header" => [
-					"type" => "box",
-					"layout" => "vertical",
-					"contents" => [
-						[
-						"type" => "text",
-						"text" => "#54545",
-						"size" => "xl",
-						"align" => "start",
-						"weight" => "bold",
-						"color" => "#262626"
-						],
-						[
-						"type" => "text",
-						"text" => $booking["name"],
-						"margin" => "md",
-						"size" => "lg",
-						"align" => "start",
-						"weight" => "bold",
-						"color" => "#262626",
-						"wrap" => true
-						],
-						[
-						"type" => "text",
-						"text" => $booking["date"].", ".$booking["time"],
-						"margin" => "sm",
-						"size" => "xs",
-						"align" => "start",
-						"color" => "#8C8C8C",
-						"wrap" => true
-						]
-					],
-					"body" => [
-					"type" => "box",
-					"layout" => "vertical",
-					"contents" => [
-						[
-						"type" => "separator",
-						"margin" => "xl",
-						"color" => "#DFDFDF"
-						],
-						[
-						"type" => "box",
-						"layout" => "baseline",
-						"margin" => "xl",
-						"contents" => [
-							[
-							"type" => "text",
-							"text" => "x".$booking["amount"],
-							"flex" => 1,
-							"size" => "xs",
-							"color" => "#8C8C8C",
-							"wrap" => true
-							],
-							[
-							"type" => "text",
-							"text" => "฿".$booking["amount"] * $booking["price"],
-							"size" => "xs",
-							"align" => "end",
-							"weight" => "bold",
-							"color" => "#262626",
-							"wrap" => true
-							]
-						]
-						],
-						[
-						"type" => "separator",
-						"margin" => "xl",
-						"color" => "#DFDFDF"
-						],
-						[
-						"type" => "box",
-						"layout" => "baseline",
-						"margin" => "xxl",
-						"contents" => [
-							[
-							"type" => "text",
-							"text" => "ผู้จอง:",
-							"size" => "sm",
-							"color" => "#8C8C8C",
-							"wrap" => true
-							],
-							[
-							"type" => "text",
-							"text" => $booking["customer_name"],
-							"size" => "sm",
-							"align" => "end",
-							"color" => "#262626",
-							"wrap" => true
-							]
-						]
-						],
-						[
-						"type" => "box",
-						"layout" => "baseline",
-						"margin" => "lg",
-						"contents" => [
-							[
-							"type" => "text",
-							"text" => "หมายเหตุ:",
-							"color" => "#8C8C8C"
-							],
-							[
-							"type" => "text",
-							"text" => $booking["note"],
-							"size" => "sm",
-							"align" => "end",
-							"color" => "#262626",
-							"wrap" => true
-							]
-						]
-						]
-					]
-					],
-					"footer" => [
-					"type" => "box",
-					"layout" => "vertical",
-					"contents" => [
-						[
-						"type" => "spacer",
-						"size" => "xl"
-						],
-						[
-						"type" => "button",
-						"action" => [
-							"type" => "postback",
-							"label" => "ยกเลิกการจอง",
-							"text" => "cancel",
-							"data" => "action=cancel&bookingId=1"
-						],
-						"color" => "#FF3B30"
-						]
-					]
-					],
-				],
-			];
-			}
+			$promotions = [];
+                    foreach ($promotionQuery as $key => $promotion) {
+                        if ($key < 5) {
+                            $promotions[] = [
+                                [
+                                  "type" => "bubble",
+                                  "hero" => [
+                                    "type" => "image",
+                                    "url" => URL::to($promotion->logo_path ? $promotion->logo_path : ""),
+                                    "size" => "full",
+                                    "aspectRatio" => "20:13",
+                                    "aspectMode" => "cover",
+                                    "action" => [
+                                      "type" => "uri",
+                                      "label" => "Action",
+                                      "uri" => "line://app/1639925368-GaY5LzMn/?shop_id=".$shopQuery->id."&promotion_id=".$promotion->id,
+                                    ]
+                                  ],
+                                  "body" => [
+                                    "type" => "box",
+                                    "layout" => "vertical",
+                                    "spacing" => "md",
+                                    "action" => [
+                                      "type" => "uri",
+                                      "label" => "promotionDetail",
+                                      "uri" => "line://app/1639925368-GaY5LzMn/?shop_id=".$shopQuery->id."&promotion_id=".$promotion->id,
+                                    ],
+                                    "contents" => [
+                                      [
+                                        "type" => "box",
+                                        "layout" => "vertical",
+                                        "contents" => [
+                                          [
+                                            "type" => "text",
+                                            "text" => $promotion->name,
+                                            "size" => "lg",
+                                            "gravity" => "center",
+                                            "weight" => "bold",
+                                            "color" => "#262626",
+                                            "wrap" => true
+                                          ],
+                                          [
+                                            "type" => "text",
+                                            "text" => $promotion->start_date." - ".$promotion->end_date,
+                                            "size" => "sm",
+                                            "align" => "start",
+                                            "weight" => "bold",
+                                            "color" => "#8C8C8C",
+                                            "wrap" => true
+                                          ],
+                                          [
+                                            "type" => "text",
+                                            "text" => "ลด ".$promotion->discount.($promotion->discount_type === "PERCENT" ? "%" : "฿"),
+                                            "size" => "md",
+                                            "weight" => "bold",
+                                            "color" => "#FF3B30",
+                                            "wrap" => true
+                                          ]
+                                        ]
+                                      ],
+                                      [
+                                        "type" => "box",
+                                        "layout" => "vertical",
+                                        "contents" => [
+                                          [
+                                            "type" => "text",
+                                            "text" => $promotion->coupon_number,
+                                            "size" => "lg",
+                                            "align" => "center",
+                                            "gravity" => "center",
+                                            "weight" => "bold",
+                                            "color" => "#262626",
+                                            "wrap" => true
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                  ],
+                                  "footer" => [
+                                    "type" => "box",
+                                    "layout" => "vertical",
+                                    "margin" => "xxl",
+                                    "contents" => [
+                                      [
+                                        "type" => "text",
+                                        "text" => $promotion->description,
+                                        "margin" => "xxl",
+                                        "size" => "xs",
+                                        "align" => "start",
+                                        "gravity" => "bottom",
+                                        "weight" => "regular",
+                                        "color" => "#8C8C8C",
+                                        "wrap" => true
+                                      ],
+                                      [
+                                        "type" => "spacer",
+                                        "size" => "xxl"
+                                      ]
+                                    ]
+                                  ],
+                                  "styles" => [
+                                    "hero" => [
+                                      "backgroundColor" => "#FFFFFF"
+                                    ],
+                                    "body" => [
+                                      "backgroundColor" => "#FFFFFF",
+                                      "separatorColor" => "#FFFFFF"
+                                    ]
+                                  ]
+                                ],
+    
+                            ];
+                        }
+                        if ($key > 4){
+                            $promotions = [
+                                [
+                                    "type" => "flex",
+                                    "altText" => "Flex Message",
+                                    "contents" => [
+                                      "type" => "bubble",
+                                      "direction" => "ltr",
+                                      "header" => [
+                                        "type" => "box",
+                                        "layout" => "vertical",
+                                        "contents" => [
+                                          [
+                                            "type" => "spacer",
+                                            "size" => "xxl"
+                                          ]
+                                        ]
+                                      ],
+                                      "hero" => [
+                                        "type" => "image",
+                                        "url" => "https://firebasestorage.googleapis.com/v0/b/trackhilight.appspot.com/o/more.png?alt=media&token=29e4d90e-465a-4ea7-b4f2-b01df46b43d6",
+                                        "align" => "center",
+                                        "gravity" => "center",
+                                        "size" => "xl",
+                                        "aspectRatio" => "1:1",
+                                        "backgroundColor" => "#FFFFFF",
+                                        "action" => [
+                                          "type" => "uri",
+                                          "label" => "ทั้งหมด",
+                                          "uri" => "line://app/1639925368-am3AkplY/?shop_id=". $shopQuery->id
+                                        ]
+                                      ],
+                                      "body" => [
+                                        "type" => "box",
+                                        "layout" => "vertical",
+                                        "contents" => [
+                                          [
+                                            "type" => "spacer"
+                                          ]
+                                        ]
+                                      ],
+                                      "footer" => [
+                                        "type" => "box",
+                                        "layout" => "horizontal",
+                                        "contents" => [
+                                          [
+                                            "type" => "spacer"
+                                          ]
+                                        ]
+                                      ]
+                                    ]
+                                ]
+                            ];
+                        }
+                    }
 
-			$my_booking_json = [
-				"type" => "flex",
-				"altText" => "Flex Message",
-				"contents" => [
-					"type" => "carousel",
-					"contents" => $my_bookings
-				]
-			];
-			$messages = $my_booking_json;
+                    $promotion_json = [
+                        "type" => "flex",
+                        "altText" => "Flex Message",
+                        "contents" => [
+                          "type" => "carousel",
+                          "contents" => $promotions
+                        ]
+                    ];
+
+                    $messages = $promotion_json;
 		}
 		if ($event['type'] == 'message' && $event['message']['text'] == 'mybooking') {
 			$code = "#46547";
