@@ -463,19 +463,172 @@ if (!is_null($events['events'])) {
 					"note" => "note",
 				],
 			];
-			$code = "#46547";
-			$mybooking_json = json_decode(file_get_contents("mybooking.json"),true);
-			$mybooking_json['contents']['header']['contents'][0]['text'] = $code;
-			$mybooking_json['contents']['header']['contents'][1]['text'] = 'นวดฝ่าเท้า';
-			$mybooking_json['contents']['header']['contents'][2]['text'] = '12/12/2020, 19:00';
-			$mybooking_json['contents']['body']['contents'][1]['contents'][0]['text'] = 'x76';
-			$mybooking_json['contents']['body']['contents'][1]['contents'][1]['text'] = '9,899 ฿';
-			$mybooking_json['contents']['body']['contents'][3]['contents'][1]['text'] = 'เจ้น้ำ';
-			$mybooking_json['contents']['body']['contents'][4]['contents'][1]['text'] = 'ขอมือเบาๆ';
-			$mybooking_json['contents']['footer']['contents'][1]['action']['displayText'] = "cancel";
-			$mybooking_json['contents']['footer']['contents'][1]['action']['data'] = 'action=cancel&booking='.$code;
+
+			$my_bookings = [];
+			foreach ($bookingQuery as $key => $booking) {
+			$my_bookings[] = [
+					"type" => "bubble",
+					"direction" => "ltr",
+					"header" => [
+						"type" => "box",
+						"layout" => "vertical",
+						"contents" => [
+							[
+								"type" => "text",
+								"text" => "#54545",
+								"size" => "xl",
+								"align" => "start",
+								"weight" => "bold",
+								"color" => "#262626"
+							],
+							[
+								"type" => "text",
+								"text" => $booking['name'],
+								"margin" => "md",
+								"size" => "lg",
+								"align" => "start",
+								"weight" => "bold",
+								"color" => "#262626",
+								"wrap" => true
+							],
+							[
+								"type" => "text",
+								"text" => $booking['date'].", ".$booking['time'],
+								"margin" => "sm",
+								"size" => "xs",
+								"align" => "start",
+								"color" => "#8C8C8C",
+								"wrap" => true
+							]
+						]
+					],
+					"body" => [
+						"type" => "box",
+						"layout" => "vertical",
+						"contents" => [
+							[
+								"type" => "separator",
+								"margin" => "xl",
+								"color" => "#DFDFDF"
+							],
+							[
+								"type" => "box",
+								"layout" => "baseline",
+								"margin" => "xl",
+								"contents" => [
+									[
+									"type" => "text",
+									"text" => "x".$booking['amount'],
+									"flex" => 1,
+									"size" => "xs",
+									"color" => "#8C8C8C",
+									"wrap" => true
+									],
+									[
+									"type" => "text",
+									"text" => "฿".$booking['amount'] * $booking['price'],
+									"size" => "xs",
+									"align" => "end",
+									"weight" => "bold",
+									"color" => "#262626",
+									"wrap" => true
+									]
+								]
+							],
+							[
+								"type" => "separator",
+								"margin" => "xl",
+								"color" => "#DFDFDF"
+							],
+							[
+								"type" => "box",
+								"layout" => "baseline",
+								"margin" => "xxl",
+								"contents" => [
+									[
+										"type" => "text",
+										"text" => "ผู้จอง:",
+										"size" => "sm",
+										"color" => "#8C8C8C",
+										"wrap" => true
+									],
+									[
+										"type" => "text",
+										"text" => $booking['customer_name'],
+										"size" => "sm",
+										"align" => "end",
+										"color" => "#262626",
+										"wrap" => true
+									]
+								]
+							],
+							[
+								"type" => "box",
+								"layout" => "baseline",
+								"margin" => "lg",
+								"contents" => [
+									[
+									"type" => "text",
+									"text" => "หมายเหตุ:",
+									"color" => "#8C8C8C"
+									],
+									[
+									"type" => "text",
+									"text" => $booking['note'],
+									"size" => "sm",
+									"align" => "end",
+									"color" => "#262626",
+									"wrap" => true
+									]
+								]
+							]
+						]
+					],
+					"footer" => [
+						"type" => "box",
+						"layout" => "vertical",
+						"contents" => [
+							[
+								"type" => "spacer",
+								"size" => "xl"
+							],
+							[
+								"type" => "button",
+								"action" => [
+									"type" => "postback",
+									"label" => "ยกเลิกการจอง",
+									"text" => "cancel",
+									"data" => "action=cancel&bookingId=1"
+								],
+								"color" => "#FF3B30"
+							]
+						]
+					]
+				];
+			}
+
+			$my_booking_json = [
+				"type" => "flex",
+				"altText" => "Flex Message",
+				"contents" => [
+					"type" => "carousel",
+					"contents" => $my_bookings
+				]
+			];
+			$messages = $my_booking_json;
+			// $code = "#46547";
+			// $mybooking_json = json_decode(file_get_contents("mybooking.json"),true);
+			// $mybooking_json['contents']['header']['contents'][0]['text'] = $code;
+			// $mybooking_json['contents']['header']['contents'][1]['text'] = 'นวดฝ่าเท้า';
+			// $mybooking_json['contents']['header']['contents'][2]['text'] = '12/12/2020, 19:00';
+			// $mybooking_json['contents']['body']['contents'][1]['contents'][0]['text'] = 'x76';
+			// $mybooking_json['contents']['body']['contents'][1]['contents'][1]['text'] = '9,899 ฿';
+			// $mybooking_json['contents']['body']['contents'][3]['contents'][1]['text'] = 'เจ้น้ำ';
+			// $mybooking_json['contents']['body']['contents'][4]['contents'][1]['text'] = 'ขอมือเบาๆ';
+			// $mybooking_json['contents']['footer']['contents'][1]['action']['displayText'] = "cancel";
+			// $mybooking_json['contents']['footer']['contents'][1]['action']['data'] = 'action=cancel&booking='.$code;
 			// $text = $event['source']['userId'];
-			$messages = $mybooking_json;
+			// $messages = $mybooking_json;
 			// $messages = [
 			// 	'type' => 'text',
 			// 	'text' => $text
@@ -484,23 +637,292 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'postback') {
 			$data = explode("&", $event['postback']['data']);
 			if($data[0] == 'action=cancel') {
-				$con_json = json_decode(file_get_contents("confirmCancel.json"),true);
-				$con_json['contents']['header']['contents'][0]['text'] = 'ยกเลิกจริงป่ะจ้ะ'.$data[1];
-				$con_json['contents']['footer']['contents'][0]['contents'][0]['action']['data'] = 'action=yescancel&' .$data[1];
-				$con_json['contents']['footer']['contents'][0]['contents'][1]['action']['data'] = 'action=nocancel&' .$data[1];
-				$messages = $con_json; 
+				$confirm_cancel_json = [
+					"type" => "flex",
+					"altText" => "Flex Message",
+					"contents" => [
+					  "type" => "bubble",
+					  "direction" => "ltr",
+					  "header" => [
+						"type" => "box",
+						"layout" => "vertical",
+						"contents" => [
+						  [
+							"type" => "text",
+							"text" => "คุณต้องการที่จะยกเลิกการจองใช่ไหม",
+							"align" => "center",
+							"color" => "#262626"
+						  ]
+						]
+					  ],
+					  "footer" => [
+						"type" => "box",
+						"layout" => "vertical",
+						"contents" => [
+						  [
+							"type" => "box",
+							"layout" => "horizontal",
+							"contents" => [
+							  [
+								"type" => "button",
+								"action" => [
+								  "type" => "postback",
+								  "label" => "Yes",
+								  "text" => "Yes",
+								  "data" => "action=yescancel&" .$data[1]
+								],
+								"color" => "#2196F3"
+							  ],
+							  [
+								"type" => "button",
+								"action" => [
+								  "type" => "postback",
+								  "label" => "No",
+								  "text" => "No",
+								  "data" => "action=nocancel&" .$data[1]
+								],
+								"color" => "#2196F3"
+							  ]
+							]
+						  ]
+						]
+					  ]
+					]
+				  ];
+				$messages = $confirm_cancel_json; 
 			}
 			if($data[0] == 'action=yescancel') {
-				$cancel_json = json_decode(file_get_contents("cancel.json"),true);
+				$mybookingData = [
+					[
+						"name" => "สปาหน้า",
+						"price" => 1000,
+						"amount" => 1000,
+						"date" => 1000,
+						"time" => 1000,
+						"customer_name" => "น้ำฝน",
+						"note" => "note",
+					],
+					[
+						"name" => "นวดเท้า",
+						"price" => 1000,
+						"amount" => 200,
+						"date" => 1000,
+						"time" => 1000,
+						"customer_name" => "ทิว",
+						"note" => "note",
+					],
+					[
+						"name" => "นวดกำจัดเซลลูไลท์",
+						"price" => 1000,
+						"amount" => 2000,
+						"date" => 1000,
+						"time" => 1000,
+						"customer_name" => "น้ำฝน",
+						"note" => "note",
+					],
+					[
+						"name" => "ซาวน่า",
+						"price" => 1000,
+						"amount" => 1500,
+						"date" => 1000,
+						"time" => 1000,
+						"customer_name" => "น้ำฝน",
+						"note" => "note",
+					],
+					[
+						"name" => "ตัดผม",
+						"price" => 1000,
+						"amount" => 500,
+						"date" => 1000,
+						"time" => 1000,
+						"customer_name" => "น้ำฝน",
+						"note" => "note",
+					],
+					[
+						"name" => "สปาเท้า",
+						"price" => 1000,
+						"amount" => 700,
+						"date" => 1000,
+						"time" => 1000,
+						"customer_name" => "น้ำฝน",
+						"note" => "note",
+					],
+				];
+				$cancel_json = [
+					"type" => "flex",
+					"altText" => "Flex Message",
+					"contents" => [
+					  "type" => "bubble",
+					  "direction" => "ltr",
+					  "header" => [
+						"type" => "box",
+						"layout" => "vertical",
+						"flex" => 1,
+						"spacing" => "none",
+						"contents" => [
+						  [
+							"type" => "box",
+							"layout" => "horizontal",
+							"contents" => [
+							  [
+								"type" => "text",
+								"text" => "#54545",
+								"size" => "xl",
+								"align" => "start",
+								"gravity" => "center",
+								"weight" => "bold",
+								"color" => "#262626",
+								"wrap" => true
+							  ],
+							  [
+								"type" => "image",
+								"url" => "https://firebasestorage.googleapis.com/v0/b/trackhilight.appspot.com/o/cancel.png?alt=media&token=894245ae-c725-47f9-b9b5-3f5c3e74daf0",
+								"margin" => "none",
+								"align" => "end",
+								"gravity" => "top",
+								"size" => "sm",
+								"aspectRatio" => "1:1"
+							  ]
+							]
+						  ],
+						  [
+							"type" => "text",
+							"text" => "สปาหน้า",
+							"margin" => "none",
+							"size" => "lg",
+							"align" => "start",
+							"weight" => "bold",
+							"color" => "#262626",
+							"wrap" => true
+						  ],
+						  [
+							"type" => "text",
+							"text" => "16/03/2020".", "."15:11",
+							"margin" => "sm",
+							"size" => "xs",
+							"align" => "start",
+							"color" => "#8C8C8C",
+							"wrap" => true
+						  ]
+						]
+					  ],
+					  "body" => [
+						"type" => "box",
+						"layout" => "vertical",
+						"contents" => [
+						  [
+							"type" => "separator",
+							"margin" => "xl",
+							"color" => "#DFDFDF"
+						  ],
+						  [
+							"type" => "box",
+							"layout" => "baseline",
+							"margin" => "xl",
+							"contents" => [
+							  [
+								"type" => "text",
+								"text" => "x2",
+								"flex" => 1,
+								"size" => "xs",
+								"color" => "#8C8C8C",
+								"wrap" => true
+							  ],
+							  [
+								"type" => "text",
+								"text" => "฿2000",
+								"size" => "xs",
+								"align" => "end",
+								"weight" => "bold",
+								"color" => "#262626",
+								"wrap" => true
+							  ]
+							]
+						  ],
+						  [
+							"type" => "separator",
+							"margin" => "xl",
+							"color" => "#DFDFDF"
+						  ],
+						  [
+							"type" => "box",
+							"layout" => "baseline",
+							"margin" => "xxl",
+							"contents" => [
+							  [
+								"type" => "text",
+								"text" => "ผู้จอง:",
+								"size" => "sm",
+								"color" => "#8C8C8C",
+								"wrap" => true
+							  ],
+							  [
+								"type" => "text",
+								"text" => "น้ำฝน",
+								"size" => "sm",
+								"align" => "end",
+								"color" => "#262626",
+								"wrap" => true
+							  ]
+							]
+						  ],
+						  [
+							"type" => "box",
+							"layout" => "baseline",
+							"margin" => "lg",
+							"contents" => [
+							  [
+								"type" => "text",
+								"text" => "หมายเหตุ:",
+								"color" => "#8C8C8C"
+							  ],
+							  [
+								"type" => "text",
+								"text" => "note",
+								"size" => "sm",
+								"align" => "end",
+								"color" => "#262626",
+								"wrap" => true
+							  ]
+							]
+						  ],
+						  [
+							"type" => "spacer",
+							"size" => "xxl"
+						  ]
+						]
+					  ]
+					]
+				  ];
 				$messages = $cancel_json;
 			}
 			if($data[0] == 'action=nocancel') {
 				$messages = [
 					'type' => 'text',
-					'text' => 'no no no'
+					'text' => 'No'
 				];
 			}
 		}
+		// if ($event['type'] == 'postback') {
+		// 	$data = explode("&", $event['postback']['data']);
+		// 	if($data[0] == 'action=cancel') {
+		// 		$con_json = json_decode(file_get_contents("confirmCancel.json"),true);
+		// 		$con_json['contents']['header']['contents'][0]['text'] = 'ยกเลิกจริงป่ะจ้ะ'.$data[1];
+		// 		$con_json['contents']['footer']['contents'][0]['contents'][0]['action']['data'] = 'action=yescancel&' .$data[1];
+		// 		$con_json['contents']['footer']['contents'][0]['contents'][1]['action']['data'] = 'action=nocancel&' .$data[1];
+		// 		$messages = $con_json; 
+		// 	}
+		// 	if($data[0] == 'action=yescancel') {
+		// 		$cancel_json = json_decode(file_get_contents("cancel.json"),true);
+		// 		$messages = $cancel_json;
+		// 	}
+		// 	if($data[0] == 'action=nocancel') {
+		// 		$messages = [
+		// 			'type' => 'text',
+		// 			'text' => 'no no no'
+		// 		];
+		// 	}
+		// }
 		if ($event['type'] == 'message' && $event['message']['text'] == 'shopinfo') {
 			$shop_info = '{
 				"type": "flex",
@@ -625,7 +1047,7 @@ if (!is_null($events['events'])) {
 						"action": {
 						  "type": "uri",
 						  "label": "เพิ่มเติม",
-						  "uri": "line://app/1639925368-G4m102RW?shop_id=1"
+						  "uri": "line://app/1639925368-G4m102RW/?shop_id=1"
 						}
 					  },
 					  {
