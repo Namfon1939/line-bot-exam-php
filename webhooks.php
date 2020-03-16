@@ -465,7 +465,7 @@ if (!is_null($events['events'])) {
 			];
 
 			$my_bookings = [];
-			foreach ($bookingQuery as $key => $booking) {
+			foreach ($mybookingData as $key => $booking) {
 			$my_bookings[] = [
 					"type" => "bubble",
 					"direction" => "ltr",
