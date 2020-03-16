@@ -242,7 +242,7 @@ if (!is_null($events['events'])) {
 						"type" => "bubble",
 						"hero" => [
 							"type" => "image",
-							"url" => $promotion['logo_path'] ? $promotion['logo_path'] : "",
+							"url" => "https://firebasestorage.googleapis.com/v0/b/trackhilight.appspot.com/o/more.png?alt=media&token=29e4d90e-465a-4ea7-b4f2-b01df46b43d6",
 							"size" => "full",
 							"aspectRatio" => "20:13",
 							"aspectMode" => "cover",
@@ -253,64 +253,64 @@ if (!is_null($events['events'])) {
 							]
 						],
 						"body" => [
-						"type" => "box",
-						"layout" => "vertical",
-						"spacing" => "md",
-						"action" => [
-							"type" => "uri",
-							"label" => "promotionDetail",
-							"uri" => "line://app/1639925368-GaY5LzMn/?shop_id=1&promotion_id=1",
-						],
-						"contents" => [
-							[
-								"type" => "box",
-								"layout" => "vertical",
-								"contents" => [
-									[
-										"type" => "text",
-										"text" => $promotion['name'],
-										"size" => "lg",
-										"gravity" => "center",
-										"weight" => "bold",
-										"color" => "#262626",
-										"wrap" => true
-									],
-									[
-										"type" => "text",
-										"text" => $promotion['start_date']." - ".$promotion['end_date'],
-										"size" => "sm",
-										"align" => "start",
-										"weight" => "bold",
-										"color" => "#8C8C8C",
-										"wrap" => true
-									],
-									[
-										"type" => "text",
-										"text" => "ลด ".$promotion['discount'].($promotion['discount_type'] === "PERCENT" ? "%" : "฿"),
-										"size" => "md",
-										"weight" => "bold",
-										"color" => "#FF3B30",
-										"wrap" => true
-									]
-								]
+							"type" => "box",
+							"layout" => "vertical",
+							"spacing" => "md",
+							"action" => [
+								"type" => "uri",
+								"label" => "promotionDetail",
+								"uri" => "line://app/1639925368-GaY5LzMn/?shop_id=1&promotion_id=1",
 							],
-							[
-								"type" => "box",
-								"layout" => "vertical",
-								"contents" => [
-									[
-										"type" => "text",
-										"text" => $promotion['coupon_number'],
-										"size" => "lg",
-										"align" => "center",
-										"gravity" => "center",
-										"weight" => "bold",
-										"color" => "#262626",
-										"wrap" => true
+							"contents" => [
+								[
+									"type" => "box",
+									"layout" => "vertical",
+									"contents" => [
+										[
+											"type" => "text",
+											"text" => $promotion['name'],
+											"size" => "lg",
+											"gravity" => "center",
+											"weight" => "bold",
+											"color" => "#262626",
+											"wrap" => true
+										],
+										[
+											"type" => "text",
+											"text" => $promotion['start_date']." - ".$promotion['end_date'],
+											"size" => "sm",
+											"align" => "start",
+											"weight" => "bold",
+											"color" => "#8C8C8C",
+											"wrap" => true
+										],
+										[
+											"type" => "text",
+											"text" => "ลด ".$promotion['discount'].($promotion['discount_type'] === "PERCENT" ? "%" : "฿"),
+											"size" => "md",
+											"weight" => "bold",
+											"color" => "#FF3B30",
+											"wrap" => true
+										]
+									]
+								],
+								[
+									"type" => "box",
+									"layout" => "vertical",
+									"contents" => [
+										[
+											"type" => "text",
+											"text" => $promotion['coupon_number'],
+											"size" => "lg",
+											"align" => "center",
+											"gravity" => "center",
+											"weight" => "bold",
+											"color" => "#262626",
+											"wrap" => true
+										]
 									]
 								]
 							]
-						]
 						],
 						"footer" => [
 							"type" => "box",
