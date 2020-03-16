@@ -242,7 +242,7 @@ if (!is_null($events['events'])) {
 						"type" => "bubble",
 						"hero" => [
 							"type" => "image",
-							"url" => URL::to($promotion['logo_path'] ? $promotion['logo_path'] : ""),
+							"url" => $promotion['logo_path'] ? $promotion['logo_path'] : "",
 							"size" => "full",
 							"aspectRatio" => "20:13",
 							"aspectMode" => "cover",
