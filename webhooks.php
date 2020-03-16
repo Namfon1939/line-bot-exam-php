@@ -868,142 +868,278 @@ if (!is_null($events['events'])) {
 		// 	}
 		// }
 		if ($event['type'] == 'message' && $event['message']['text'] == 'shopinfo') {
-			$shop_info = '{
-				"type": "flex",
-				"altText": "Flex Message",
-				"contents": {
-				  "type": "bubble",
-				  "hero": {
-					"type": "image",
-					"url": "https://f.ptcdn.info/945/029/000/1427894585-guccih-o.jpg",
-					"size": "full",
-					"aspectRatio": "20:13",
-					"aspectMode": "cover",
-					"action": {
-					  "type": "uri",
-					  "label": "Line",
-					  "uri": "https://linecorp.com/"
-					}
-				  },
-				  "body": {
-					"type": "box",
-					"layout": "vertical",
-					"contents": [
-					  {
-						"type": "text",
-						"text": "Brown Cafe",
-						"size": "xl",
-						"weight": "bold"
-					  },
-					  {
-						"type": "box",
-						"layout": "vertical",
-						"spacing": "sm",
-						"margin": "lg",
-						"contents": [
-						  {
-							"type": "box",
-							"layout": "baseline",
-							"spacing": "xl",
-							"contents": [
-							  {
-								"type": "icon",
-								"url": "https://cdn3.iconfinder.com/data/icons/unicons-vector-icons-pack/32/phone-512.png"
-							  },
-							  {
-								"type": "text",
-								"text": "081-232-5559",
-								"flex": 5,
-								"size": "sm",
-								"color": "#666666",
-								"wrap": true
-							  }
+			// $shop_info = '{
+			// 	"type": "flex",
+			// 	"altText": "Flex Message",
+			// 	"contents": {
+			// 	  "type": "bubble",
+			// 	  "hero": {
+			// 		"type": "image",
+			// 		"url": "https://f.ptcdn.info/945/029/000/1427894585-guccih-o.jpg",
+			// 		"size": "full",
+			// 		"aspectRatio": "20:13",
+			// 		"aspectMode": "cover",
+			// 		"action": {
+			// 		  "type": "uri",
+			// 		  "label": "Line",
+			// 		  "uri": "https://linecorp.com/"
+			// 		}
+			// 	  },
+			// 	  "body": {
+			// 		"type": "box",
+			// 		"layout": "vertical",
+			// 		"contents": [
+			// 		  {
+			// 			"type": "text",
+			// 			"text": "Brown Cafe",
+			// 			"size": "xl",
+			// 			"weight": "bold"
+			// 		  },
+			// 		  {
+			// 			"type": "box",
+			// 			"layout": "vertical",
+			// 			"spacing": "sm",
+			// 			"margin": "lg",
+			// 			"contents": [
+			// 			  {
+			// 				"type": "box",
+			// 				"layout": "baseline",
+			// 				"spacing": "xl",
+			// 				"contents": [
+			// 				  {
+			// 					"type": "icon",
+			// 					"url": "https://cdn3.iconfinder.com/data/icons/unicons-vector-icons-pack/32/phone-512.png"
+			// 				  },
+			// 				  {
+			// 					"type": "text",
+			// 					"text": "081-232-5559",
+			// 					"flex": 5,
+			// 					"size": "sm",
+			// 					"color": "#666666",
+			// 					"wrap": true
+			// 				  }
+			// 				]
+			// 			  },
+			// 			  {
+			// 				"type": "box",
+			// 				"layout": "baseline",
+			// 				"spacing": "xl",
+			// 				"contents": [
+			// 				  {
+			// 					"type": "icon",
+			// 					"url": "https://cdn3.iconfinder.com/data/icons/unicons-vector-icons-pack/32/phone-512.png"
+			// 				  },
+			// 				  {
+			// 					"type": "text",
+			// 					"text": "123/35 ข้างโรงแรมเชียงใหมภูคํา",
+			// 					"flex": 5,
+			// 					"size": "sm",
+			// 					"color": "#666666",
+			// 					"wrap": true
+			// 				  }
+			// 				]
+			// 			  },
+			// 			  {
+			// 				"type": "box",
+			// 				"layout": "baseline",
+			// 				"spacing": "xl",
+			// 				"contents": [
+			// 				  {
+			// 					"type": "icon",
+			// 					"url": "https://cdn3.iconfinder.com/data/icons/unicons-vector-icons-pack/32/phone-512.png"
+			// 				  },
+			// 				  {
+			// 					"type": "text",
+			// 					"text": "จันทร์ - ศุกร์, 08:00-18:00 น.",
+			// 					"flex": 5,
+			// 					"size": "sm",
+			// 					"color": "#666666",
+			// 					"wrap": true
+			// 				  }
+			// 				]
+			// 			  }
+			// 			]
+			// 		  }
+			// 		]
+			// 	  },
+			// 	  "footer": {
+			// 		"type": "box",
+			// 		"layout": "vertical",
+			// 		"flex": 0,
+			// 		"spacing": "sm",
+			// 		"contents": [
+			// 		  {
+			// 			"type": "button",
+			// 			"action": {
+			// 			  "type": "uri",
+			// 			  "label": "โทรออก",
+			// 			  "uri": "tel:0839651517"
+			// 			}
+			// 		  },
+			// 		  {
+			// 			"type": "button",
+			// 			"action": {
+			// 			  "type": "uri",
+			// 			  "label": "นำทาง",
+			// 			  "uri": "https://www.google.co.th/maps/@18.7877873,98.9534804,18z/data=!4m2!10m1!1e2?hl=en&authuser=0"
+			// 			},
+			// 			"height": "sm",
+			// 			"style": "link"
+			// 		  },
+			// 		  {
+			// 			"type": "button",
+			// 			"action": {
+			// 			  "type": "uri",
+			// 			  "label": "เพิ่มเติม",
+			// 			  "uri": "line://app/1639925368-Pqw2Qd0O/?shop_id=1"
+			// 			}
+			// 		  },
+			// 		  {
+			// 			"type": "spacer",
+			// 			"size": "sm"
+			// 		  }
+			// 		]
+			// 	  }
+			// 	}
+			//   }';
+			// $shopinfo_json = json_decode($shop_info);
+			// $messages = $shopinfo_json;
+
+			$shop_info = [
+				"type" => "flex",
+				"altText" => "Flex Message",
+				"contents" => [
+				  "type" => "bubble",
+				  "hero" => [
+					  "type" => "image",
+					  "url" => "https://ashop.avalue.co.th//uploads//shop//4//1584353927b15d.png",
+					  "size" => "full",
+					  "aspectRatio" => "20:13",
+					  "aspectMode" => "cover",
+					  "action" => [
+					  "type" => "uri",
+					  "label" => "Line",
+					  "uri" => "line://app/1639925368-Pqw2Qd0O/?shop_id=1"
+					  ]
+				  ],
+				  "body" => [
+					"type" => "box",
+					"layout" => "vertical",
+					"contents" => [
+					[
+						"type" => "text",
+						"text" => "Brown Cafe",
+						"size" => "xl",
+						"weight" => "bold"
+					],
+					[
+						"type" => "box",
+						"layout" => "vertical",
+						"spacing" => "sm",
+						"margin" => "lg",
+						"contents" => [
+						  [
+							"type" => "box",
+							"layout" => "baseline",
+							"spacing" => "xl",
+							"contents" => [
+							  [
+								  "type" => "icon",
+								  "url" => "https://cdn3.iconfinder.com/data/icons/unicons-vector-icons-pack/32/phone-512.png"
+							  ],
+							  [
+								  "type" => "text",
+								  "text" => "0815960912",
+								  "flex" => 5,
+								  "size" => "sm",
+								  "color" => "#666666",
+								  "wrap" => true
+							  ]
 							]
-						  },
-						  {
-							"type": "box",
-							"layout": "baseline",
-							"spacing": "xl",
-							"contents": [
-							  {
-								"type": "icon",
-								"url": "https://cdn3.iconfinder.com/data/icons/unicons-vector-icons-pack/32/phone-512.png"
-							  },
-							  {
-								"type": "text",
-								"text": "123/35 ข้างโรงแรมเชียงใหมภูคํา",
-								"flex": 5,
-								"size": "sm",
-								"color": "#666666",
-								"wrap": true
-							  }
+						  ],
+						  [
+							"type" => "box",
+							"layout" => "baseline",
+							"spacing" => "xl",
+							"contents" => [
+							  [
+								  "type" => "icon",
+								  "url" => "https://cdn3.iconfinder.com/data/icons/unicons-vector-icons-pack/32/phone-512.png"
+							  ],
+							  [
+								  "type" => "text",
+								  "text" => "address",
+								  "flex" => 5,
+								  "size" => "sm",
+								  "color" => "#666666",
+								  "wrap" => true
+							  ]
 							]
-						  },
-						  {
-							"type": "box",
-							"layout": "baseline",
-							"spacing": "xl",
-							"contents": [
-							  {
-								"type": "icon",
-								"url": "https://cdn3.iconfinder.com/data/icons/unicons-vector-icons-pack/32/phone-512.png"
-							  },
-							  {
-								"type": "text",
-								"text": "จันทร์ - ศุกร์, 08:00-18:00 น.",
-								"flex": 5,
-								"size": "sm",
-								"color": "#666666",
-								"wrap": true
-							  }
+						  ],
+						  [
+							"type" => "box",
+							"layout" => "baseline",
+							"spacing" => "xl",
+							"contents" => [
+							  [
+								  "type" => "icon",
+								  "url" => "https://cdn3.iconfinder.com/data/icons/unicons-vector-icons-pack/32/phone-512.png"
+							  ],
+							  [
+								  "type" => "text",
+								  "text" => "13:00 - 18:00",
+								  "flex" => 5,
+								  "size" => "sm",
+								  "color" => "#666666",
+								  "wrap" => true
+							  ]
 							]
-						  }
+						  ]
 						]
-					  }
+					  ]
 					]
-				  },
-				  "footer": {
-					"type": "box",
-					"layout": "vertical",
-					"flex": 0,
-					"spacing": "sm",
-					"contents": [
-					  {
-						"type": "button",
-						"action": {
-						  "type": "uri",
-						  "label": "โทรออก",
-						  "uri": "tel:0839651517"
-						}
-					  },
-					  {
-						"type": "button",
-						"action": {
-						  "type": "uri",
-						  "label": "นำทาง",
-						  "uri": "https://www.google.co.th/maps/@18.7877873,98.9534804,18z/data=!4m2!10m1!1e2?hl=en&authuser=0"
-						},
-						"height": "sm",
-						"style": "link"
-					  },
-					  {
-						"type": "button",
-						"action": {
-						  "type": "uri",
-						  "label": "เพิ่มเติม",
-						  "uri": "line://app/1639925368-Pqw2Qd0O/?shop_id=1"
-						}
-					  },
-					  {
-						"type": "spacer",
-						"size": "sm"
-					  }
-					]
-				  }
-				}
-			  }';
-			$shopinfo_json = json_decode($shop_info);
-			$messages = $shopinfo_json;
+				  ],
+				  "footer" => [
+					  "type" => "box",
+					  "layout" => "vertical",
+					  "flex" => 0,
+					  "spacing" => "sm",
+					  "contents" => [
+						[
+							"type" => "button",
+							"action" => [
+							"type" => "uri",
+							"label" => "โทรออก",
+							"uri" => "tel:0815960912",
+							]
+						],
+						[
+							"type" => "button",
+							"action" => [
+							"type" => "uri",
+							"label" => "นำทาง",
+							"uri" => "https://www.google.co.th/maps/@18.787771,98.9534805,16z?hl=en&authuser=0"
+							],
+							"height" => "sm",
+							"style" => "link"
+						],
+						[
+							"type" => "button",
+							"action" => [
+							"type" => "uri",
+							"label" => "เพิ่มเติม",
+							"uri" => "line://app/1639925368-VE967m25/?shop_id=4"
+							]
+						],
+						[
+							"type" => "spacer",
+							"size" => "sm"
+						]
+					  ]
+				  ]
+				]
+			];
+			$messages = $shop_info;
 		}
 
 		if ($event['type'] == 'message' && $event['message']['text'] == 'contact') {
