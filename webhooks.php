@@ -692,62 +692,6 @@ if (!is_null($events['events'])) {
 				$messages = $confirm_cancel_json; 
 			}
 			if($data[0] == 'action=yescancel') {
-				$mybookingData = [
-					[
-						"name" => "สปาหน้า",
-						"price" => 1000,
-						"amount" => 1000,
-						"date" => 1000,
-						"time" => 1000,
-						"customer_name" => "น้ำฝน",
-						"note" => "note",
-					],
-					[
-						"name" => "นวดเท้า",
-						"price" => 1000,
-						"amount" => 200,
-						"date" => 1000,
-						"time" => 1000,
-						"customer_name" => "ทิว",
-						"note" => "note",
-					],
-					[
-						"name" => "นวดกำจัดเซลลูไลท์",
-						"price" => 1000,
-						"amount" => 2000,
-						"date" => 1000,
-						"time" => 1000,
-						"customer_name" => "น้ำฝน",
-						"note" => "note",
-					],
-					[
-						"name" => "ซาวน่า",
-						"price" => 1000,
-						"amount" => 1500,
-						"date" => 1000,
-						"time" => 1000,
-						"customer_name" => "น้ำฝน",
-						"note" => "note",
-					],
-					[
-						"name" => "ตัดผม",
-						"price" => 1000,
-						"amount" => 500,
-						"date" => 1000,
-						"time" => 1000,
-						"customer_name" => "น้ำฝน",
-						"note" => "note",
-					],
-					[
-						"name" => "สปาเท้า",
-						"price" => 1000,
-						"amount" => 700,
-						"date" => 1000,
-						"time" => 1000,
-						"customer_name" => "น้ำฝน",
-						"note" => "note",
-					],
-				];
 				$cancel_json = [
 					"type" => "flex",
 					"altText" => "Flex Message",
@@ -1047,7 +991,7 @@ if (!is_null($events['events'])) {
 						"action": {
 						  "type": "uri",
 						  "label": "เพิ่มเติม",
-						  "uri": "line://app/1639925368-G4m102RW/?shop_id=1"
+						  "uri": "line://app/1639925368-Pqw2Qd0O/?shop_id=1"
 						}
 					  },
 					  {
@@ -1062,7 +1006,98 @@ if (!is_null($events['events'])) {
 			$messages = $shopinfo_json;
 		}
 
-
+		if ($event['type'] == 'message' && $event['message']['text'] == 'contact') {
+			$messages = [
+			  "type" => "flex",
+			  "altText" => "Flex Message",
+			  "contents" => [
+				"type" => "bubble",
+				"direction" => "ltr",
+				"header" => [
+				  "type" => "box",
+				  "layout" => "vertical",
+				  "contents" => [
+					[
+					  "type" => "text",
+					  "text" => "ติดต่อพนักงาน",
+					  "size" => "xl",
+					  "align" => "center",
+					  "weight" => "bold",
+					  "color" => "#262626",
+					  "wrap" => true
+					]
+				  ]
+				],
+				"body" => [
+				  "type" => "box",
+				  "layout" => "vertical",
+				  "contents" => [
+					[
+					  "type" => "box",
+					  "layout" => "baseline",
+					  "spacing" => "md",
+					  "contents" => [
+						[
+						  "type" => "icon",
+						  "url" => "https://firebasestorage.googleapis.com/v0/b/trackhilight.appspot.com/o/phone.png?alt=media&token=a1c3cf51-c741-4321-84d5-0b27a6ae85a7"
+						],
+						[
+						  "type" => "text",
+						  "text" => "0815960912",
+						  "size" => "md",
+						  "color" => "#262626"
+						]
+					  ]
+					],
+					[
+					  "type" => "box",
+					  "layout" => "baseline",
+					  "spacing" => "md",
+					  "contents" => [
+						[
+						  "type" => "icon",
+						  "url" => "https://firebasestorage.googleapis.com/v0/b/trackhilight.appspot.com/o/line.png?alt=media&token=a6280042-6cac-4f05-bfa5-00545f089aa4",
+						  "aspectRatio" => "1:1"
+						],
+						[
+						  "type" => "text",
+						  "text" => "@961imuth",
+						  "size" => "md",
+						  "align" => "start",
+						  "color" => "#262626",
+						  "wrap" => true
+						]
+					  ]
+					]
+				  ]
+				],
+				"footer" => [
+				  "type" => "box",
+				  "layout" => "vertical",
+				  "contents" => [
+					[
+					  "type" => "button",
+					  "action" => [
+						"type" => "uri",
+						"label" => "โทรออก",
+						"uri" => "tel:"."0815960912"
+					  ],
+					  "color" => "#2196F3"
+					],
+					[
+					  "type" => "button",
+					  "action" => [
+						"type" => "uri",
+						"label" => "พูดคุยผ่าน line",
+						"uri" => "line://oaMessage/"."@961imuth"."/?"
+					  ],
+					  "color" => "#2196F3"
+					]
+				  ]
+				]
+			  ]
+			];
+		  }
 		
 		// Get replyToken
 		$replyToken = $event['replyToken'];
