@@ -410,6 +410,7 @@ if (!is_null($events['events'])) {
 			$mybookingData = [
 				[
 					"name" => "สปาหน้า",
+					"promotion_name" => "สวัสดี",
 					"price" => 1000,
 					"amount" => 1000,
 					"date" => 1000,
@@ -419,6 +420,7 @@ if (!is_null($events['events'])) {
 				],
 				[
 					"name" => "นวดเท้า",
+					"promotion_name" => "สวัสดี",
 					"price" => 1000,
 					"amount" => 200,
 					"date" => 1000,
@@ -428,6 +430,7 @@ if (!is_null($events['events'])) {
 				],
 				[
 					"name" => "นวดกำจัดเซลลูไลท์",
+					"promotion_name" => "สวัสดี",
 					"price" => 1000,
 					"amount" => 2000,
 					"date" => 1000,
@@ -437,6 +440,7 @@ if (!is_null($events['events'])) {
 				],
 				[
 					"name" => "ซาวน่า",
+					"promotion_name" => "สวัสดี",
 					"price" => 1000,
 					"amount" => 1500,
 					"date" => 1000,
@@ -446,6 +450,7 @@ if (!is_null($events['events'])) {
 				],
 				[
 					"name" => "ตัดผม",
+					"promotion_name" => "สวัสดี",
 					"price" => 1000,
 					"amount" => 500,
 					"date" => 1000,
@@ -455,6 +460,7 @@ if (!is_null($events['events'])) {
 				],
 				[
 					"name" => "สปาเท้า",
+					"promotion_name" => "สวัสดี",
 					"price" => 1000,
 					"amount" => 700,
 					"date" => 1000,
@@ -473,137 +479,158 @@ if (!is_null($events['events'])) {
 						"type" => "box",
 						"layout" => "vertical",
 						"contents" => [
-							[
-								"type" => "text",
-								"text" => "#54545",
-								"size" => "xl",
-								"align" => "start",
-								"weight" => "bold",
-								"color" => "#262626"
-							],
-							[
-								"type" => "text",
-								"text" => $booking['name'],
-								"margin" => "md",
-								"size" => "lg",
-								"align" => "start",
-								"weight" => "bold",
-								"color" => "#262626",
-								"wrap" => true
-							],
-							[
-								"type" => "text",
-								"text" => $booking['date'].", ".$booking['time'],
-								"margin" => "sm",
-								"size" => "xs",
-								"align" => "start",
-								"color" => "#8C8C8C",
-								"wrap" => true
-							]
+						[
+							"type" => "text",
+							"text" => "#54545",
+							"size" => "xl",
+							"align" => "start",
+							"weight" => "bold",
+							"color" => "#262626"
+						],
+						[
+							"type" => "text",
+							"text" => $booking['name'],
+							"margin" => "md",
+							"size" => "lg",
+							"align" => "start",
+							"weight" => "bold",
+							"color" => "#262626",
+							"wrap" => true
+						],
+						[
+							"type" => "text",
+							"text" => $booking['date'].", ".$booking['time'],
+							"margin" => "sm",
+							"size" => "xs",
+							"align" => "start",
+							"color" => "#8C8C8C",
+							"wrap" => true
+						]
 						]
 					],
 					"body" => [
 						"type" => "box",
 						"layout" => "vertical",
 						"contents" => [
+						[
+							"type" => "separator",
+							"margin" => "xl",
+							"color" => "#DFDFDF"
+						],
+						[
+							"type" => "box",
+							"layout" => "baseline",
+							"margin" => "xl",
+							"contents" => [
 							[
-								"type" => "separator",
-								"margin" => "xl",
-								"color" => "#DFDFDF"
+								"type" => "text",
+								"text" => "x".$booking['amount'],
+								"flex" => 1,
+								"size" => "xs",
+								"color" => "#8C8C8C",
+								"wrap" => true
 							],
 							[
-								"type" => "box",
-								"layout" => "baseline",
-								"margin" => "xl",
-								"contents" => [
-									[
-									"type" => "text",
-									"text" => "x".$booking['amount'],
-									"flex" => 1,
-									"size" => "xs",
-									"color" => "#8C8C8C",
-									"wrap" => true
-									],
-									[
-									"type" => "text",
-									"text" => "฿".$booking['amount'] * $booking['price'],
-									"size" => "xs",
-									"align" => "end",
-									"weight" => "bold",
-									"color" => "#262626",
-									"wrap" => true
-									]
-								]
-							],
-							[
-								"type" => "separator",
-								"margin" => "xl",
-								"color" => "#DFDFDF"
-							],
-							[
-								"type" => "box",
-								"layout" => "baseline",
-								"margin" => "xxl",
-								"contents" => [
-									[
-										"type" => "text",
-										"text" => "ผู้จอง:",
-										"size" => "sm",
-										"color" => "#8C8C8C",
-										"wrap" => true
-									],
-									[
-										"type" => "text",
-										"text" => $booking['customer_name'],
-										"size" => "sm",
-										"align" => "end",
-										"color" => "#262626",
-										"wrap" => true
-									]
-								]
-							],
-							[
-								"type" => "box",
-								"layout" => "baseline",
-								"margin" => "lg",
-								"contents" => [
-									[
-									"type" => "text",
-									"text" => "หมายเหตุ:",
-									"color" => "#8C8C8C"
-									],
-									[
-									"type" => "text",
-									"text" => $booking['note'],
-									"size" => "sm",
-									"align" => "end",
-									"color" => "#262626",
-									"wrap" => true
-									]
-								]
+								"type" => "text",
+								"text" => "฿".$booking['amount'] * $booking['price'],
+								"size" => "xs",
+								"align" => "end",
+								"weight" => "bold",
+								"color" => "#262626",
+								"wrap" => true
 							]
+							]
+						],
+						[
+							"type" => "separator",
+							"margin" => "xl",
+							"color" => "#DFDFDF"
+						],
+						[
+							"type" => "box",
+							"layout" => "baseline",
+							"margin" => "xxl",
+							"contents" => [
+							[
+								"type" => "text",
+								"text" => "ผู้จอง:",
+								"size" => "sm",
+								"color" => "#8C8C8C",
+								"wrap" => true
+							],
+							[
+								"type" => "text",
+								"text" => $booking['customer_name'],
+								"size" => "sm",
+								"align" => "end",
+								"color" => "#262626",
+								"wrap" => true
+							]
+							]
+						],
+						[
+							"type" => "box",
+							"layout" => "baseline",
+							"margin" => "lg",
+							"contents" => [
+							[
+								"type" => "text",
+								"text" => "โปรโมชั่น:",
+								"color" => "#8C8C8C",
+								"wrap" => true
+							],
+							[
+								"type" => "text",
+								"text" => $booking['promotion_name'],
+								"size" => "sm",
+								"align" => "end",
+								"color" => "#262626",
+								"wrap" => true
+							]
+							]
+						],
+						[
+							"type" => "box",
+							"layout" => "baseline",
+							"margin" => "lg",
+							"contents" => [
+							[
+								"type" => "text",
+								"text" => "หมายเหตุ:",
+								"color" => "#8C8C8C"
+							],
+							[
+								"type" => "text",
+								"text" => $booking['note'],
+								"size" => "sm",
+								"align" => "end",
+								"color" => "#262626",
+								"wrap" => true
+							]
+							]
+						]
 						]
 					],
 					"footer" => [
 						"type" => "box",
 						"layout" => "vertical",
 						"contents" => [
-							[
-								"type" => "spacer",
-								"size" => "xl"
+						[
+							"type" => "spacer",
+							"size" => "xl"
+						],
+						[
+							"type" => "button",
+							"action" => [
+							"type" => "postback",
+							"label" => "ยกเลิกการจอง",
+							"text" => "cancel",
+							"data" => "18"
 							],
-							[
-								"type" => "button",
-								"action" => [
-									"type" => "postback",
-									"label" => "ยกเลิกการจอง",
-									"text" => "cancel",
-									"data" => "action=cancel&bookingId=1"
-								],
-								"color" => "#FF3B30"
-							]
+							"color" => "#FF3B30"
 						]
-					]
+						]
+					],
 				];
 			}
 
@@ -615,6 +642,7 @@ if (!is_null($events['events'])) {
 					"contents" => $my_bookings
 				]
 			];
+
 			$messages = $my_booking_json;
 			// $code = "#46547";
 			// $mybooking_json = json_decode(file_get_contents("mybooking.json"),true);
