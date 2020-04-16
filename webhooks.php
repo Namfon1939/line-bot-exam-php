@@ -1263,7 +1263,14 @@ if (!is_null($events['events'])) {
 			];
 		  }
 		
-		// Get replyToken
+		if ($event['type'] == 'message' && $event['message']['text'] == 'search') {
+			$messages = [
+				'type' => 'text',
+				'text' => $event['source']['userId'],
+			];
+		}
+		
+		  // Get replyToken
 		$replyToken = $event['replyToken'];
 		$url = 'https://api.line.me/v2/bot/message/reply';
 		$data = [
